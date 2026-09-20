@@ -2,7 +2,7 @@
 
 // Cadenas de texto (string)
 let myName = "Ortiz Antonio"
-let alias = 'AntonioDev'
+let alias = 'AntonioO'
 let email = `ortizantonio@antoniodev.com`
 
 // Números (number)
@@ -30,7 +30,7 @@ let myBigInt = BigInt(817239871289371986589716389471628379612983761289376129)
 let myBigInt2 = 817239871289371986589716389471628379612983761289376129n
 
 // Mostramos los tipos de datos
-console.log(typeof myName)
+console.log("myName:" + typeof myName)
 console.log(typeof alias)
 console.log(typeof email)
 
