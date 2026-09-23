@@ -58,21 +58,81 @@ console.log(a != 6) // Desigualdad por valor
 console.log(a !== "6") // Desigualdad por identidad (por tipo y valor) o desigualdad estricta
 
 // JavaScript convierte el booleano con 0 (falso) y con 1 (verdadero)
-console.log(0 == false)
+console.log(0 == true)
 console.log(1 == true)
-console.log(2 == false)
-console.log(3 == true)
+
+
+console.log(2 == false) // falso
+console.log(2 == true) // falso
 
 console.log(0 == "")
 console.log(0 == "") // true
 console.log(0 == " ") 
 console.log(0 == '')
 console.log(0 == "0")
+
 console.log(0 == "Hola")  // false
+
+
+
 console.log(0 === "")
 console.log(0 === false)
+
+console.log("Estamos aquí")
 console.log(undefined == null)
 console.log(undefined === null)
+
+
+/* 
+Truthy values (valores verdaderos)
+
+- Todos los números positivos y negativos menos el cero
+- Todas las cadenas de texto menos las vacías
+- El boolean true
+
+
+
+Falsy values (valores falsos
+
+- 0
+- 0n
+- null
+- undefined
+- NaN (Not a Number)
+- Cadenas de texto vaías
+
+*/
+
+
+// Operadores lógicos
+
+// and (&&)
+console.log(5 > 10 && 15 > 20)
+console.log(5 < 10 && 15 < 20)
+console.log(5 < 10 && 15 > 20)
+console.log(5 > 10 && 15 > 20 && 30 > 40)
+
+
+// or (||)
+console.log(5 > 10 || 15 > 20)
+console.log(5 < 10 || 15 < 20)
+console.log(5 < 10 || 15 > 20)
+console.log(5 > 10 || 15 > 20 || 30 > 40)
+console.log(5 > 10 && 15 > 20 || 30 < 40)
+
+// not (!)
+console.log(!true)
+console.log(!false)
+console.log(!(5 > 10 && 15 > 20))
+console.log(!(5 > 10 || 15 > 20))
+
+// Operadores ternarios
+
+const isRaining = true
+isRaining ? console.log("Está lloviendo") : console.log("no está lloviendo")
+
+
+
 
 
 
