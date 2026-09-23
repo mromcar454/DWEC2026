@@ -16,8 +16,8 @@ function myFuncWithParams(name) {
     console.log(`¡Hola, ${name}!`)
 }
 
-myFuncWithParams("Ortiz")
-myFuncWithParams("AntonioDev")
+myFuncWithParams("Miguel")
+myFuncWithParams("Antonio")
 
 // Funciones anónimas
 
@@ -25,7 +25,7 @@ const myFunc2 = function (name) {
     console.log(`¡Hola, ${name}!`)
 }
 
-myFunc2("Ortiz Antonio")
+myFunc2("Miguel")
 
 // Arrow functions
 
@@ -35,8 +35,8 @@ const myFunc3 = (name) => {
 
 const myFunc4 = (name) => console.log(`¡Hola, ${name}!`)
 
-myFunc3("Ortiz Antonio")
-myFunc4("Ortiz Antonio")
+myFunc3("Miguel")
+myFunc4("Antonio")
 
 // Parámetros
 

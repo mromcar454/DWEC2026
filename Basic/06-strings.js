@@ -2,7 +2,7 @@
 
 // Concatenación
 
-let myName = "Ortiz"
+let myName = "Miguel"
 let greeting = "Hola, " + myName + "!"
 console.log(greeting)
 console.log(typeof greeting)
@@ -21,13 +21,13 @@ console.log(greeting[11])
 console.log(greeting.toUpperCase()) // Mayúsculas
 console.log(greeting.toLowerCase()) // Minúsculas
 console.log(greeting.indexOf("Hola")) // Índice
-console.log(greeting.indexOf("Ortiz"))
-console.log(greeting.indexOf("AntonioDev"))
+console.log(greeting.indexOf("Miguel"))
+console.log(greeting.indexOf("A"))
 console.log(greeting.includes("Hola")) // Incluye
-console.log(greeting.includes("Ortiz"))
-console.log(greeting.includes("AntonioDev"))
+console.log(greeting.includes("Miguel"))
+console.log(greeting.includes("A"))
 console.log(greeting.slice(0, 10)) // Sección
-console.log(greeting.replace("Ortiz", "Antonio")) // Reemplazo
+console.log(greeting.replace("Miguel", "Antonio")) // Reemplazo
 
 // Template literals (plantillas literales)
 
@@ -39,5 +39,5 @@ JavaScript`
 console.log(message)
 
 // Interpolación de valores
-let email = "ortizantonio@antoniodev.com"
+let email = "mromcar454@geducaand.es"
 console.log(`Hola, ${myName}! Tu email es ${email}.`)

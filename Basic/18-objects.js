@@ -3,9 +3,9 @@
 // Sintaxis
 
 let person = {
-    name: "Antonio",
-    age: 37,
-    alias: "Ortíz"
+    name: "José",
+    age: 17,
+    alias: "Jota"
 }
 
 // Acceso a propiedades
@@ -18,7 +18,7 @@ console.log(person["name"])
 
 // Modificación de propiedades
 
-person.name = "Antonio Ortíz"
+person.name = "José Ortíz"
 console.log(person.name)
 
 console.log(typeof person.age)
@@ -34,7 +34,7 @@ console.log(person)
 
 // Nueva propiedad
 
-person.email = "ortizantonio@antoniodev.com"
+person.email = "email@email.com"
 person["age"] = 37
 
 console.log(person)
@@ -42,9 +42,9 @@ console.log(person)
 // Métodos (funciones)
 
 let person2 = {
-    name: "Ortiz",
+    name: "José",
     age: 37,
-    alias: "AntonioDev",
+    alias: "Jota",
     walk: function () {
         console.log("La persona camina.")
     }
