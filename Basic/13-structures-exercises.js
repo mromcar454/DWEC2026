@@ -1,11 +1,25 @@
 
 // 1. Crea un array que almacene cinco animales
-
+let arrayAnimals = ["Tiger", "Dog", "Cat", "Lion", "Cow"]
 // 2. Añade dos más. Uno al principio y otro al final
+arrayAnimals.push("Horse")
+arrayAnimals.push("Bird")
+console.log(arrayAnimals)
+
 
 // 3. Elimina el que se encuentra en tercera posición
 
+// Elimino pero el array sigue manteniendo esa posición vacía
+//delete arrayAnimals[2]
+//console.log(arrayAnimals)
+
+// Elimino con splice
+arrayAnimals.splice(2,1)
+console.log(arrayAnimals)
+
 // 4. Crea un set que almacene cinco libros
+
+
 
 // 5. Añade dos más. Uno de ellos repetido
 

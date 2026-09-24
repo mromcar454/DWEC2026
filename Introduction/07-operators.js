@@ -133,7 +133,8 @@ Estructuras de datos (objetos {} y arrays [], incluso si están vacíos)
 El booleano true
 
 ¿Para qué sirve en la práctica?
-Permite escribir código más limpio y directo para validar si una variable tiene datos útiles antes de usarla, sin necesidad de hacer comparaciones explícitas:
+Permite escribir código más limpio y directo para validar si una variable 
+tiene datos útiles antes de usarla, sin necesidad de hacer comparaciones explícitas:
 
 
 */
