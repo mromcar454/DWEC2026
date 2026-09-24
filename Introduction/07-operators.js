@@ -83,7 +83,8 @@ console.log(undefined == null)
 console.log(undefined === null)
 
 
-/* 
+/*
+
 Truthy values (valores verdaderos)
 
 - Todos los números positivos y negativos menos el cero
@@ -101,7 +102,56 @@ Falsy values (valores falsos
 - NaN (Not a Number)
 - Cadenas de texto vaías
 
+
+
+1. Falsy (Valores equivalentes a false)
+Son los únicos valores en todo el lenguaje que JavaScript considera negativos en una condición:
+
+false
+
+0, -0
+
+0n (BigInt cero)
+
+"", '', \` (cadenas de texto vacías)
+
+null (ausencia de valor)
+
+undefined (variable no definida)
+
+NaN (Not a Number / resultado matemático inválido)
+
+2. Truthy (Valores equivalentes a true)
+Es absolutamente cualquier otro valor que no pertenezca a la lista de los falsy. Se evalúan como verdaderos:
+
+Números diferentes de cero (ej. 1, -5, 3.14)
+
+Cadenas de texto con contenido (ej. "Hola", incluso "0" o "false" porque no están vacías)
+
+Estructuras de datos (objetos {} y arrays [], incluso si están vacíos)
+
+El booleano true
+
+¿Para qué sirve en la práctica?
+Permite escribir código más limpio y directo para validar si una variable tiene datos útiles antes de usarla, sin necesidad de hacer comparaciones explícitas:
+
+
 */
+
+//JavaScript
+
+let usuario = "Ana"; // Truthy (cadena con texto)
+let mensajes = 0;    // Falsy (número cero)
+
+// En lugar de escribir: if (usuario !== "" && usuario !== null)
+if (usuario) {
+  console.log(`Bienvenida, ${usuario}`); // Se ejecuta
+}
+
+// En lugar de escribir: if (mensajes > 0)
+if (mensajes) {
+  console.log("Tienes mensajes nuevos"); // NO se ejecuta porque 0 es falsy
+}
 
 
 // Operadores lógicos
