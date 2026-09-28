@@ -7,6 +7,7 @@ for (let i = 0; i < 5; i++) {
     console.log(`Hola ${i}`)
 }
 
+
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
 
 for (let i = 0; i < numbers.length; i++) {
@@ -20,6 +21,9 @@ while (i < 5) {
     console.log(`Hola ${i}`)
     i++
 }
+
+
+
 
 // Bucle infinito
 // while(true) {
@@ -37,11 +41,11 @@ do {
 
 const myArray = [1, 2, 3, 4]
 
-const mySet = new Set(["Ortiz", "Antonio", "antoniodev", 37, true, "ortizantonio@antoniodev.com"])
+const mySet = new Set(["Miguel", "Romero", "migue", 37, true, "mromcar454@g.educaand.es"])
 
 const myMap = new Map([
-    ["name", "Ortiz"],
-    ["email", "ortizantonio@antoniodev.com"],
+    ["name", "Miguel"],
+    ["email", "mromcar454@g.educaand.es"],
     ["age", 37]
 ])
 
