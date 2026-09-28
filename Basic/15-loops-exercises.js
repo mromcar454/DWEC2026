@@ -11,7 +11,8 @@
 
 // 5. Escribe un bucle que cuente el número de vocales en una cadena de texto
 
-// 6. Dado un array de números, usa un bucle para multiplicar todos los números y mostrar el producto
+// 6. Dado un array de números, usa un bucle para multiplicar todos los números y mostrar el
+//  producto
 
 // 7. Escribe un bucle que imprima la tabla de multiplicar del 5
 
@@ -19,4 +20,5 @@
 
 // 9. Usa un bucle para generar los primeros 10 números de la secuencia de Fibonacci
 
-// 10. Dado un array de números, usa un bucle para crear un nuevo array que contenga solo los números mayores a 10
+// 10. Dado un array de números, usa un bucle para crear un nuevo array que 
+// contenga solo los  números mayores a 10

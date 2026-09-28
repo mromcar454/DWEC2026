@@ -95,4 +95,12 @@ console.log(subarray2ultimos)
 
 
 
+// clear
+
+myArray = []
+
+myArray.length = 0 //alternativa
+
+
+
 
