@@ -3,6 +3,7 @@
 // Concatenación
 
 let myName = "Miguel"
+
 let greeting = "Hola, " + myName + "!"
 console.log(greeting)
 console.log(typeof greeting)
