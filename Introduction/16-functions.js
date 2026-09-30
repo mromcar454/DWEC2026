@@ -117,3 +117,31 @@ myMap.forEach((value) => console.log(value))
 
 
 
+// forEach con Arrays
+
+let vector = [12,334,111,52,98]
+vector.forEach(function (elemento, posicion){
+console.log(`Posición: ${posicion}, Elemento: ${elemento}`)
+})
+
+
+let conjunto = new Set()
+conjunto.add(12).add(334).add(111).add(52).add(98)
+conjunto.forEach(function (elemento){
+console.log(`elemento: ${elemento}`)
+})
+
+// conjunto.forEach((elemento) => console.log(`elemento: ${posicion}`))
+
+
+// Mapas
+
+let mapa = new Map()
+mapa.set('a',12).set('b',334).set('c',56)
+mapa.forEach(function (valor, clave){
+console.log(`Clave: ${clave} / Valor: ${valor}`)
+})
+
+
+
+

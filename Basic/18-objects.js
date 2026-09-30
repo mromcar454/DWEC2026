@@ -63,7 +63,7 @@ let person3 = {
     job: {
         name: "Programador",
         exp: 15,
-        work: function () {
+        work: function () { via
             console.log(`La persona de ${this.age} años de experiencia trabaja.`)
         }
     }
@@ -85,6 +85,8 @@ let person4 = {
     age: 37
 }
 
+
+console.log("igualdad de objetos --------")
 console.log(person)
 console.log(person4)
 

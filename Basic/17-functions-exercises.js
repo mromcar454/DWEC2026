@@ -15,6 +15,11 @@ const suma = (a,b) => {
 
 const suma = (a,b) => (a +b)
 
+
+
+
+
+
 // 1. Crea una función que reciba dos números y devuelva su suma
 
 function getSuma (a=0, b=0){
@@ -30,6 +35,7 @@ let miArray = [8,10,20,40,4]
 
 function mayorArray (array) {
 let mayor = array[0]
+
 for (let value of array){
     if (value > mayor){
         mayor = value
@@ -51,10 +57,18 @@ console.log(`El número mayor es ${numeroMayor}`)
 const mayorArray = (array) => {
     let mayor = array[0] 
     array.forEach(value => {
-        if (value > mayor) mayor = value
+        if (value > mayor) {
+            mayor = value
+        } 
     })
     return mayor
 }
+
+
+
+
+
+
 
 
 // 3. Crea una función que reciba un string y devuelva el número de vocales que contiene
@@ -158,7 +172,7 @@ const commonElementsArray = (array1, array2) => {
 }
 
 
-/*
+
 function commonElementsArray(array1, array2) {
     return array1.filter(element => array2.includes(element))
 }
@@ -166,9 +180,9 @@ function commonElementsArray(array1, array2) {
 let array1 = [1, 2, 3, 4]
 let array2 = [4, 5, 6, 7]
 
-console.log(commonElementsArray(array1, array2)) // Resultado: [4]
+console.log(commonElementsArray(array1, array2))
 
-*/
+
 
 
 // 7. Crea una función que reciba un array de números y devuelva la suma de todos los números pares
@@ -238,20 +252,20 @@ const cuadrado = (array) => {
     return newArray
 }
 
-/*
+
 let array8 = [4,5,20,9]
 let array8cuadrado = cuadrado(array8)
 console.log(array8cuadrado)
 
 function cuadrado(array) {
-    return array.map(value => value ** 2)
+    return array.map(value => value * 1,21)
 }
 
 let array8 = [4, 5, 20, 9]
 let array8cuadrado = cuadrado(array8)
 
 console.log(array8cuadrado)
-*/
+
 
 // 9. Crea una función que reciba una cadena de texto y devuelva la misma cadena con las palabras en orden inverso
 
