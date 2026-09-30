@@ -1,5 +1,20 @@
 // NOTA: Explora diferentes sintaxis de funciones para resolver los ejercicios
 
+function suma (a,b) {
+    return ( a + b )
+}
+
+const suma = function (a,b){
+    return ( a + b )
+}
+
+
+const suma = (a,b) => {
+    return ( a + b )
+}
+
+const suma = (a,b) => (a +b)
+
 // 1. Crea una función que reciba dos números y devuelva su suma
 
 function getSuma (a=0, b=0){
@@ -14,7 +29,7 @@ console.log (suma)
 let miArray = [8,10,20,40,4]
 
 function mayorArray (array) {
-let mayor = 0
+let mayor = array[0]
 for (let value of array){
     if (value > mayor){
         mayor = value
@@ -25,8 +40,21 @@ for (let value of array){
 return mayor
 }
 
+
+// Con foreach
+
 let numeroMayor = mayorArray(miArray)
 console.log(`El número mayor es ${numeroMayor}`)
+
+
+
+const mayorArray = (array) => {
+    let mayor = array[0] 
+    array.forEach(value => {
+        if (value > mayor) mayor = value
+    })
+    return mayor
+}
 
 
 // 3. Crea una función que reciba un string y devuelva el número de vocales que contiene
@@ -62,6 +90,14 @@ console.log(arrayUpperCase(myArray))
 
 
 // const arrayUpperCase = (array) => array.map(value => value.toUpperCase());
+
+
+// con foreach
+const arrayUpperCase = (array) => {
+    let newArray = []
+    array.forEach(value => newArray.push(value.toUpperCase()))
+    return newArray
+}
 
 
 // 5. Crea una función que reciba un número y devuelva true si es primo, y false en caso contrario
@@ -112,6 +148,16 @@ let dosArrays = []
 dosArrays = commonElementsArray(array1,array2)
 console.log(dosArrays)
 
+// con foreach
+const commonElementsArray = (array1, array2) => {
+    let comunes = []
+    array1.forEach(value => {
+        if (contains(value, array2)) comunes.push(value)
+    })
+    return comunes
+}
+
+
 /*
 function commonElementsArray(array1, array2) {
     return array1.filter(element => array2.includes(element))
@@ -150,6 +196,17 @@ function isPar (number) {
  let total7 = sumArray(myArray7)
 console.log(total7)
 
+
+
+// con foreach
+const sumArray = (array) => {
+    let sum = 0
+    array.forEach(value => {
+        if (isPar(value)) sum += value
+    })
+    return sum
+}
+
 /*
 function sumEvenNumbers(array) {
     return array
@@ -173,6 +230,13 @@ function cuadrado (array) {
     return newArray
 }
 
+
+// foreach
+const cuadrado = (array) => {
+    let newArray = []
+    array.forEach(value => newArray.push(value ** 2))
+    return newArray
+}
 
 /*
 let array8 = [4,5,20,9]
@@ -212,4 +276,4 @@ function factorial (number) {
     return result
 }
 
-console.log(factorial(8))
+console.log(factorial(5))

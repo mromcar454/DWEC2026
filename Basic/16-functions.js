@@ -110,3 +110,4 @@ myArray.forEach((value) => console.log(value))
 mySet.forEach((value) => console.log(value))
 
 myMap.forEach((value) => console.log(value))
+
