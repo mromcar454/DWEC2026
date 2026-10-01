@@ -1,9 +1,24 @@
 
 // 1. Crea un objeto con 3 propiedades
 
+let objeto = {
+    propiedad1: "p1",
+    propiedad2: "p2",
+    propiedad3: "p3"
+}
+
 // 2. Accede y muestra su valor
+console.log(objeto.propiedad1)
+console.log(objeto.propiedad2)
+console.log(objeto.propiedad3)
+
+for (let key in objeto) {
+    console.log(`Clave:  ${key} / Valor: ${objeto[key]]`)
+}
 
 // 3. Agrega una nueva propiedad
+
+
 
 // 4. Elimina una de las 3 primeras propiedades
 
