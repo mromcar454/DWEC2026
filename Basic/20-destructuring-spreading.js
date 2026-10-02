@@ -16,7 +16,7 @@ console.log(myName)
 // Desestructuración
 
 // Sintaxis arrays
-
+console.log("Sintaxis arrays")
 let [myValue0, myValue1, myValue2, myValue3, myValue4] = myArray
 console.log(myValue0)
 console.log(myValue1)
@@ -25,6 +25,7 @@ console.log(myValue3)
 console.log(myValue4)
 
 // Sintaxis arrays con valores predeterminados
+console.log("Sintaxis arrays con valores predeterminados")
 
 let [myValue5 = 0, myValue6 = 0, myValue7 = 0, myValue8 = 0, myValue9 = 0] = myArray
 console.log(myValue5)
@@ -34,10 +35,12 @@ console.log(myValue8)
 console.log(myValue9)
 
 // Ignorar elementos array
-
+console.log ("Ignorar elementos array")
 let [myValue10, , , myValue13] = myArray
 console.log(myValue10)
 console.log(myValue13)
+
+/*
 
 // Sintaxis objects
 
@@ -115,3 +118,6 @@ console.log(person4)
 let person5 = { ...person }
 
 console.log(person5)
+
+
+*/
