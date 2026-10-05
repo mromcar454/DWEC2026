@@ -49,21 +49,41 @@ let objetoAnidado = {
     }
 }
 
-let {propiedad3, anidado: {propiedadAnidada6: miPropiedad4} } = objetoAnidado
+let {anidado: {propiedadAnidada6: miPropiedad6, propiedadAnidada2: miPropiedad21} } = objetoAnidado
 
-console.log(propiedad3)
-console.log(miPropiedad4)
+console.log(miPropiedad6)
+console.log(miPropiedad21)
 
 
 // 6. Usa propagación para combinar dos arrays en uno nuevo
 
+let myArray5 = [5,6,7,8]
 
+let myArray6 = [...myArray, ...myArray5]
+console.log(myArray6)
 
 
 // 7. Usa propagación para crear una copia de un array
 
+let copiaArray = [...myArray]
+
 // 8. Usa propagación para combinar dos objetos en uno nuevo
+
+let nuevoObjeto = {...objeto, ...objetoAnidado}
 
 // 9. Usa propagación para crear una copia de un objeto
 
+let nuevoObjeto2 = {...objeto}
+
 // 10. Combina desestructuración y propagación
+
+let objeto2 = {
+    propiedad4: "p4",
+    propiedad5: "p5"
+}
+
+
+let {propiedad3, propiedad4 } = {...objeto, ...objeto2}
+
+console.log(propiedad3)
+console.log(propiedad4)
