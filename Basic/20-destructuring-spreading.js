@@ -40,7 +40,7 @@ let [myValue10, , , myValue13] = myArray
 console.log(myValue10)
 console.log(myValue13)
 
-/*
+
 
 // Sintaxis objects
 
@@ -120,4 +120,3 @@ let person5 = { ...person }
 console.log(person5)
 
 
-*/
