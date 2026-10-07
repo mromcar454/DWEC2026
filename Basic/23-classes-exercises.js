@@ -67,9 +67,13 @@ class Vehículo {
 
 class Coche extends Vehículo {
     constructor(marca, modelo, puertas) {
-        super(marca)
-        super(modelo)
+        super(marca, modelo)
         this.puertas = puertas
+    }
+    // 10. Sobrescribe un método de una clase que utilice herencia
+    enMarcha() {
+        // Reemplazamos el comportamiento original por uno específico para Coche
+        console.log(`El coche ${this.marca} ${this.modelo} con ${this.puertas} puertas está en marcha`)
     }
 }
 
@@ -89,8 +93,89 @@ class Moto {
 
 
 
-// 8. Modifica la clase con getters y setters para que use propiedades privadas
+
+// 8. Clase Moto corregida con propiedades privadas (#)
+class Moto {
+    // Declaración de propiedades privadas
+    #marca
+    #modelo
+
+    constructor(marca, modelo) {
+        this.#marca = marca
+        this.#modelo = modelo
+    }
+
+    enMarcha() {
+        console.log("La moto está andando")
+    }
+
+    // Getter y Setter para 'marca'
+    get marca() {
+        return this.#marca
+    }
+
+    set marca(nuevaMarca) {
+        // Ejemplo de validación en un setter
+        if (nuevaMarca.trim() !== "") {
+            this.#marca = nuevaMarca
+        }
+    }
+
+    // Getter y Setter para 'modelo'
+    get modelo() {
+        return this.#modelo
+    }
+
+    set modelo(nuevoModelo) {
+        this.#modelo = nuevoModelo
+    }
+}
+
 
 // 9. Utiliza los get y set y muestra sus valores
 
+// Creación de la instancia
+const miMoto = new Moto("Honda", "CBR 600")
+
+// Lectura de valores mediante los GETTERS
+console.log("--- Valores iniciales ---")
+console.log(`Marca: ${miMoto.marca}`)   // Invoca el getter 'marca'
+console.log(`Modelo: ${miMoto.modelo}`) // Invoca el getter 'modelo'
+
+// Modificación de valores mediante los SETTERS
+miMoto.marca = "Yamaha"                 // Invoca el setter 'marca'
+miMoto.modelo = "MT-07"                 // Invoca el setter 'modelo'
+
+// Lectura de los nuevos valores actualizados
+console.log("\n--- Valores modificados ---")
+console.log(`Nueva Marca: ${miMoto.marca}`)
+console.log(`Nuevo Modelo: ${miMoto.modelo}`)
+
+miMoto.enMarcha()
+
+
+
 // 10. Sobrescribe un método de una clase que utilice herencia 
+
+class Vehículo {
+    constructor(marca, modelo){
+        this.marca = marca
+        this.model = modelo
+    }
+
+    enMarcha() {
+        console.log("El vehículo está andando")
+    }
+}
+
+class Coche extends Vehículo {
+    constructor(marca, modelo, puertas) {
+        super(marca, modelo)
+        this.puertas = puertas
+    }
+    // 10. Sobrescribe un método de una clase que utilice herencia
+    enMarcha() {
+        // Reemplazamos el comportamiento original por uno específico para Coche
+        console.log(`El coche ${this.marca} ${this.modelo} con ${this.puertas} puertas está en marcha`)
+    }
+}
