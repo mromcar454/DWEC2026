@@ -70,14 +70,19 @@ person4.walk()
 
 /*
 
-Las propiedades privadas en JavaScript son variables definidas dentro de una clase a las que solo se puede acceder o modificar desde el código de la propia clase. Se identifican mediante el símbolo # antes de su nombre.
+Las propiedades privadas en JavaScript son variables definidas dentro de una clase a 
+las que solo se puede acceder o modificar desde el código de la propia clase.
+Se identifican mediante el símbolo # antes de su nombre.
 
 Reglas clave de las propiedades privadas
-Protección real a nivel de lenguaje: Si intentas leer o modificar una propiedad privada directamente desde fuera del objeto (objeto.#propiedad), JavaScript lanzará un error de sintaxis (SyntaxError).
+Protección real a nivel de lenguaje: Si intentas leer o modificar una propiedad privada
+directamente desde fuera del objeto (objeto.#propiedad), JavaScript lanzará un error de sintaxis (SyntaxError).
 
-Declaración previa obligatoria: A diferencia de las propiedades públicas (que se pueden crear directamente dentro del constructor), las propiedades privadas deben declararse obligatoriamente en el cuerpo de la clase antes de usarse.
+Declaración previa obligatoria: A diferencia de las propiedades públicas (que se pueden crear directamente dentro del constructor), 
+las propiedades privadas deben declararse obligatoriamente en el cuerpo de la clase antes de usarse.
 
-Acceso mediante métodos internos: La única forma de consultar o alterar su contenido desde fuera es a través de métodos públicos, getters o setters definidos en la misma clase.
+Acceso mediante métodos internos: La única forma de consultar o alterar su contenido desde fuera es
+a través de métodos públicos, getters o setters definidos en la misma clase.
 
 */
 
@@ -123,7 +128,7 @@ class CuentaBancaria {
     depositar(monto) {
         if (monto > 0) {
             this.#saldo += monto
-            console.log(`Has depositado $${monto}`)
+            console.log(`Has depositado ${monto}`)
         }
     }
 
@@ -183,7 +188,7 @@ class GetSetPerson {
 
 }
 
-person6 = new GetSetPerson("Ortiz", 37, "AntonioDev", "IBAN123456789")
+person6 = new GetSetPerson("Miguel", 30, "Miguel R", "IBAN123456789")
 
 console.log(person6)
 console.log(person6.name)
