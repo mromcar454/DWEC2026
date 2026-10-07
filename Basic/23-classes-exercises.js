@@ -179,3 +179,24 @@ class Coche extends Vehículo {
         console.log(`El coche ${this.marca} ${this.modelo} con ${this.puertas} puertas está en marcha`)
     }
 }
+
+
+// ==========================================
+// Demostración y comprobación de funcionamiento
+// ==========================================
+
+// Instancia de la clase padre
+const unVehiculo = new Vehiculo("Generico", "V1")
+unVehiculo.enMarcha() 
+// Salida: "El vehículo está andando"
+
+// Instancia de la clase hija (Coche)
+const miCoche = new Coche("Toyota", "Corolla", 5)
+
+// Comprobamos la herencia de propiedades
+console.log(miCoche.marca)   // "Toyota"
+console.log(miCoche.puertas) // 5
+
+// Comprobamos la sobrescritura del método (Ejercicio 10)
+miCoche.enMarcha() 
+// Salida: "El coche Toyota Corolla con 5 puertas está en marcha 🚗"
