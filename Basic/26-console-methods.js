@@ -102,7 +102,6 @@ console.timeEnd("Tiempo de ejecución 1")
 
 // assert
 
-
 /*
 Aserción viene de afirmación: es una declaración o condición que el programador asume que siempre es verdadera en un punto concreto del código.
 console.assert() evalúa una condición lógica y muestra un mensaje de error únicamente si la condición es falsa. 

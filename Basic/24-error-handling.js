@@ -43,6 +43,28 @@ try {
 // }
 
 // Lanzamiento de errores
+/*
+En JavaScript, Error es la clase base (u objeto global constructor) para todos los errores en tiempo de ejecución.
+
+Propiedades principales de un objeto Error
+
+Cuando se crea o se lanza un error, el objeto resultante suele contener estas propiedades:
+• name: El tipo o nombre del error (por ejemplo, "Error", "TypeError", "ReferenceError").
+• message: Un mensaje descriptivo que explica qué salió mal.
+• stack: La traza de la pila (muestra las funciones y líneas de código por las que pasó el programa hasta llegar al error).
+
+
+Tipos de errores derivados
+
+JavaScript incluye varios subtipos o clases que heredan de Error:
+• SyntaxError: Ocurre cuando el código no cumple con las reglas de sintaxis de JavaScript y el motor no puede interpretarlo.
+• Reference: (ReferenceError) Sucede cuando intentas usar una variable que no ha sido declarada o no existe en el ámbito actual.
+• TypeError: Aparece cuando un valor no es del tipo esperado (por ejemplo, intentar llamar a algo que no es una función o leer una propiedad de null).
+• RangeError: Se lanza cuando un valor numérico está fuera de su rango permitido (por ejemplo, al crear un array con una longitud negativa).
+• URIError: Se produce cuando se usan mal las funciones globales de codificación/decodificación de URI (como encodeURI o decodeURI).
+
+
+*/
 
 // throw
 
