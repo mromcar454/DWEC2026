@@ -114,14 +114,15 @@ try {
 
 
 /*Capturar y diferenciar varios errores (Manejo Específico)
-A diferencia de lenguajes como Java o Python (que permiten escribir varios bloques catch), en JavaScript solo existe un bloque catch. Para manejar múltiples errores, se evalúa el tipo de error dentro del catch con instanceof o error.name.
+A diferencia de lenguajes como Java o Python (que permiten escribir varios bloques catch), en JavaScript solo existe un bloque catch.
+ Para manejar múltiples errores, se evalúa el tipo de error dentro del catch con instanceof o error.name.
 
 Ventaja: Te permite tomar acciones correctivas distintas según la causa del problema.
 
 Inconveniente: Requiere más código y conocer las clases de error que pueden lanzarse.
 */
 
-JavaScript
+
 try {
     console.log(sumIntegers(0, 10))
 } catch (error) {
