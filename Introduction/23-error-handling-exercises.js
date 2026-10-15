@@ -54,3 +54,30 @@ class ExcepcionPersonalizada extends Error {
 // 9. Crea una función que verifique si un objeto tiene una propiedad específica y lance una excepción personalizada
 
 // 10. Crea una función que realice reintentos en caso de error hasta un máximo de 10
+
+
+class ExcepcionPersonalizada extends Error {
+    constructor(mensaje, code, a, b) {
+        super(mensaje);
+        this.name = "ExcepcionPersonalizada";
+        this.code = code; 
+        this.a = a;
+        this.b = b;
+    }
+}
+
+function potencia(a, b) {
+    if (typeof a !== "number" || typeof b !== "number") {
+        // Lanzamos la excepción personalizada pasando el código de error
+throw new ExcepcionPersonalizada("Los argumentos deben ser números", 1, a, b);
+    }
+    return Math.pow(a, b);
+}
+
+try {
+    console.log(potencia(5, 3));  // Imprime 125
+    console.log(potencia(5, "3")); // Lanza el error
+} catch (error) { // <--- Es indispensable capturar 'error' aquí
+    console.log(`Error [${error.code}]: ${error.message}`);
+    console.log(`Valores recibidos -> a: ${error.a}, b: ${error.b}`);
+}

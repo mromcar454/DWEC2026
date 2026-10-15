@@ -11,7 +11,7 @@ console.log("¡Hola, JavaScript!")
 
 // Se utiliza para notificar fallos o excepciones.
 
-//Visual: En la consola del navegador se muestra resaltado en color rojo, generalmente acompañado de un icono de error (❌).
+// Visual: En la consola del navegador se muestra resaltado en color rojo, generalmente acompañado de un icono de error (❌).
 
 // Stack Trace: Si le pasas un objeto de tipo new Error(), además del mensaje mostrará la traza completa de llamadas (stack trace) para indicar exactamente en qué archivo y línea ocurrió el problema.
 
@@ -103,7 +103,8 @@ console.timeEnd("Tiempo de ejecución 1")
 // assert
 
 /*
-Aserción viene de afirmación: es una declaración o condición que el programador asume que siempre es verdadera en un punto concreto del código.
+Aserción viene de afirmación: es una declaración o 
+condición que el programador asume que siempre es verdadera en un punto concreto del código.
 console.assert() evalúa una condición lógica y muestra un mensaje de error únicamente si la condición es falsa. 
 Si la condición es verdadera, no hace nada y el código continúa en silencio.
 
