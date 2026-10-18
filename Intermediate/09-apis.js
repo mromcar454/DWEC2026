@@ -88,7 +88,7 @@ createPost()
 
 // Manejo de errores
 
-fetch("https://jsonplaceholder.typicode.com/antoniodev")
+fetch("https://jsonplaceholder.typicode.com/romerodev")
     .then(response => {
         if (!response.ok) {
             throw Error(`Status HTTP: ${response.status}`)

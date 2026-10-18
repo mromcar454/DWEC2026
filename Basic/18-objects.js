@@ -54,9 +54,9 @@ person2.walk()
 // Anidación de objetos
 
 let person3 = {
-    name: "Ortiz",
+    name: "Miguel",
     age: 37,
-    alias: "AntonioDev",
+    alias: "RomeroDev",
     walk: function () {
         console.log("La persona camina.")
     },
@@ -79,9 +79,9 @@ person3.job.work()
 // Igualdad de objetos
 
 let person4 = {
-    name: "Ortiz Antonio",
-    alias: "AntonioDev",
-    email: "ortizantonio@antoniodev.com",
+    name: "Miguel Romero",
+    alias: "RomeroDev",
+    email: "Miguelromero@romerodev.com",
     age: 37
 }
 
@@ -108,7 +108,7 @@ function Person(name, age) { // Debería ser una clase
     this.age = age
 }
 
-let person5 = new Person("Ortiz", 37)
+let person5 = new Person("Miguel", 37)
 console.log(person5)
 console.log(person5.name)
 

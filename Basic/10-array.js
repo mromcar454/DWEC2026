@@ -22,24 +22,24 @@ myArray2 = new Array(1, 2, 3, 4)
 console.log(myArray)
 console.log(myArray2)
 
-myArray = ["Ortiz", "Antonio", "antoniodev", 37, true]
-myArray2 = new Array("Ortiz", "Antonio", "antoniodev", 37, true)
+myArray = ["Miguel", "Romero", "romerodev", 37, true]
+myArray2 = new Array("Miguel", "Romero", "romerodev", 37, true)
 
 console.log(myArray)
 console.log(myArray2)
 
 myArray2 = new Array(3)
-myArray2[2] = "Ortiz"
-// myArray2[0] = "Antonio"
-myArray2[1] = "antoniodev"
-myArray2[4] = "antoniodev"
+myArray2[2] = "Miguel"
+// myArray2[0] = "Romero"
+myArray2[1] = "romerodev"
+myArray2[4] = "romerodev"
 
 console.log(myArray2)
 
 myArray = []
-myArray[2] = "Ortiz"
-// myArray[0] = "Antonio"
-myArray[1] = "antoniodev"
+myArray[2] = "Miguel"
+// myArray[0] = "Romero"
+myArray[1] = "romerodev"
 
 console.log(myArray)
 
@@ -49,9 +49,9 @@ myArray = []
 
 // push y pop
 
-myArray.push("Ortiz")
-myArray.push("Antonio")
-myArray.push("antoniodev")
+myArray.push("Miguel")
+myArray.push("Romero")
+myArray.push("romerodev")
 myArray.push(37)
 
 console.log(myArray)
@@ -66,7 +66,7 @@ console.log(myArray)
 console.log(myArray.shift())
 console.log(myArray)
 
-myArray.unshift("Ortiz", "antoniodev")
+myArray.unshift("Miguel", "romerodev")
 console.log(myArray)
 
 // length
@@ -81,7 +81,7 @@ console.log(myArray)
 
 // slice
 
-myArray = ["Ortiz", "Antonio", "antoniodev", 37, true]
+myArray = ["Miguel", "Romero", "romerodev", 37, true]
 
 let myNewArray = myArray.slice(1, 3)
 
@@ -93,7 +93,7 @@ console.log(myNewArray)
 myArray.splice(1, 3)
 console.log(myArray)
 
-myArray = ["Ortiz", "Antonio", "antoniodev", 37, true]
+myArray = ["Miguel", "Romero", "romerodev", 37, true]
 
 myArray.splice(1, 2, "Nueva entrada")
 console.log(myArray)

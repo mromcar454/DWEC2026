@@ -17,7 +17,7 @@ function myFuncWithParams(name) {
 }
 
 myFuncWithParams("Miguel")
-myFuncWithParams("Antonio")
+myFuncWithParams("Romero")
 
 // Funciones anónimas
 
@@ -36,7 +36,7 @@ const myFunc3 = (name) => {
 const myFunc4 = (name) => console.log(`¡Hola, ${name}!`)
 
 myFunc3("Miguel")
-myFunc4("Antonio")
+myFunc4("Romero")
 
 // Parámetros
 
@@ -93,11 +93,11 @@ applyFunc(myFunc4, "función de orden superior")
 
 const myArray = [1, 2, 3, 4]
 
-const mySet = new Set(["Ortiz", "Antonio", "antoniodev", 37, true, "ortizantonio@antoniodev.com"])
+const mySet = new Set(["Miguel", "Romero", "romerodev", 37, true, "Miguelromero@romerodev.com"])
 
 const myMap = new Map([
-    ["name", "Ortiz"],
-    ["email", "ortizantonio@antoniodev.com"],
+    ["name", "Miguel"],
+    ["email", "Miguelromero@romerodev.com"],
     ["age", 37]
 ])
 

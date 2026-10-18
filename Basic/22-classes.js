@@ -14,8 +14,8 @@ class Person {
 
 // Sintaxis
 
-let person = new Person("Ortiz", 37, "AntonioDev")
-let person2 = new Person("Ortiz", 37, "AntonioDev")
+let person = new Person("Miguel", 37, "RomeroDev")
+let person2 = new Person("Miguel", 37, "RomeroDev")
 
 console.log(person)
 console.log(person2)
@@ -34,7 +34,7 @@ class DefaultPerson {
 
 }
 
-let person3 = new DefaultPerson("Ortiz", 37)
+let person3 = new DefaultPerson("Miguel", 37)
 
 console.log(person3)
 
@@ -43,7 +43,7 @@ console.log(person3)
 console.log(person3.alias)
 console.log(person3["alias"])
 
-person3.alias = "AntonioDev"
+person3.alias = "RomeroDev"
 
 console.log(person3.alias)
 
@@ -63,7 +63,7 @@ class PersonWithMethod {
 
 }
 
-let person4 = new PersonWithMethod("Ortiz", 37, "AntonioDev")
+let person4 = new PersonWithMethod("Miguel", 37, "RomeroDev")
 person4.walk()
 
 // Propiedades privadas
@@ -106,7 +106,7 @@ class PrivatePerson {
 
 }
 
-let person5 = new PrivatePerson("Ortiz", 37, "AntonioDev", "IBAN123456789")
+let person5 = new PrivatePerson("Miguel", 37, "RomeroDev", "IBAN123456789")
 
 // No podemos acceder
 // console.log(person5.bank) 
@@ -239,11 +239,11 @@ class Fish extends Animal {
 
 }
 
-let myDog = new Dog("AntonioDog")
+let myDog = new Dog("RomeroDog")
 myDog.run()
 myDog.sound()
 
-let myFish = new Fish("AntonioFish", 10)
+let myFish = new Fish("RomeroFish", 10)
 myFish.swim()
 myFish.sound()
 

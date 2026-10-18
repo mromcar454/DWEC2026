@@ -42,7 +42,7 @@ console.info("Este es un mensaje de información adicional.")
 // Usa los índices numéricos como encabezados de columna (0, 1).
 
 let data = [
-    ["Ortiz", 37],
+    ["Miguel", 37],
     ["Sara", 21]
 ]
 
@@ -53,7 +53,7 @@ console.table(data)
 // Toma el nombre de cada propiedad (name, age) y los convierte automáticamente en las columnas de la tabla.
 
 data = [
-    { name: "Ortiz", age: 37 },
+    { name: "Miguel", age: 37 },
     { name: "Sara", age: 21 }
 ]
 
@@ -64,7 +64,7 @@ console.table(data)
 // Sirven para agrupar y organizar visualmente los mensajes en la consola de desarrollador mediante sangrías (indentación) y bloques desplegables.
 
 console.group("Usuario:")
-console.log("Nombre: Ortiz")
+console.log("Nombre: Miguel")
 console.log("Edad: 37")
 console.groupEnd()
 

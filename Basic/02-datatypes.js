@@ -1,9 +1,9 @@
 // Tipos de datos primitivos
 
 // Cadenas de texto (string)
-let myName = "Ortiz Antonio"
-let alias = 'AntonioO'
-let email = `ortizantonio@antoniodev.com`
+let myName = "Miguel Romero"
+let alias = 'RomeroO'
+let email = `Miguelromero@romerodev.com`
 
 // Números (number)
 let age = 37 // Entero

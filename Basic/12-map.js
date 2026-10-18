@@ -9,8 +9,8 @@ console.log(myMap)
 // Inicialiación
 
 myMap = new Map([
-    ["name", "Ortiz"],
-    ["email", "ortizantonio@antoniodev.com"],
+    ["name", "Miguel"],
+    ["email", "Miguelromero@romerodev.com"],
     ["age", 37]
 ])
 
@@ -20,8 +20,8 @@ console.log(myMap)
 
 // set
 
-myMap.set("alias", "antoniodev")
-myMap.set("name", "Ortiz Antonio")
+myMap.set("alias", "romerodev")
+myMap.set("name", "Miguel Romero")
 
 console.log(myMap)
 

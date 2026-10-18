@@ -2,7 +2,7 @@
 let myArray = [1, 2, 3, 4]
 
 let person = {
-    name: "Antonio",
+    name: "Romero",
     age: 37,
     alias: "Ortíz"
 }
@@ -67,9 +67,9 @@ console.log(alias3)
 // Objects anidados
 
 let person3 = {
-    name: "Ortiz",
+    name: "Miguel",
     age: 37,
-    alias: "AntonioDev",
+    alias: "RomeroDev",
     walk: function () {
         console.log("La persona camina.")
     },
@@ -109,7 +109,7 @@ console.log(myArray4)
 
 // Sintaxis objects
 
-let person4 = { ...person, email: "antonio@ortiz.com" }
+let person4 = { ...person, email: "romero@Miguel.com" }
 
 console.log(person4)
 

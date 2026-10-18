@@ -10,7 +10,7 @@ Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=7639
 // Prototipos
 
 let person = {
-    name: "Ortiz",
+    name: "Miguel",
     age: 37,
     greet() {
         console.log(`Hola, soy ${this.name}`)
@@ -32,7 +32,7 @@ person.sayAge()
 let programmer = Object.create(person)
 programmer.language = "JavaScript"
 
-programmer.name = "AntonioDev"
+programmer.name = "RomeroDev"
 console.log(person.name)
 console.log(person.language)
 
@@ -53,15 +53,15 @@ Person.prototype.greet = function () {
     console.log(`Hola, soy ${this.name}`)
 }
 
-let newPerson = new Person("Ortiz", 37)
+let newPerson = new Person("Miguel", 37)
 newPerson.greet()
 
 // - Métodos avanzados
 
 // assign
 
-let personCore = { name: "Ortiz" }
-let personDetails = { age: 37, alias: "AntonioDev" }
+let personCore = { name: "Miguel" }
+let personDetails = { age: 37, alias: "RomeroDev" }
 
 let fullPerson = Object.assign(personCore, personDetails)
 console.log(fullPerson)

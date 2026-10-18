@@ -126,7 +126,7 @@ setA.forEach(element => console.log(element))
 // - Iteración
 
 let myMap = new Map([
-    ["name", "AntonioDev"],
+    ["name", "RomeroDev"],
     ["age", 37]
 ])
 

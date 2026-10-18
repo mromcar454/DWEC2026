@@ -1,27 +1,45 @@
-/*
-Clases 2 a 11 - Funciones avanzadas
-Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=346
-*/
-
 // Ciudadanos de primera clase
+
+// En JavaScript, decir que las funciones son ciudadanos de primera clase 
+// (first-class citizens o first-class functions) significa que se tratan como cualquier otro valor 
+// o tipo de dato en el lenguaje (como un número, un string o un objeto).
+
+// Esto implica que no están limitadas a ser solo bloques de código que se ejecutan; tienen los mismos "derechos y privilegios" que cualquier variable.
+
+function greet1(name) {
+    console.log(`Hola, ${name}`)
+}
+
+greet1("Miguel")
 
 const greet = function (name) {
     console.log(`Hola, ${name}`)
 }
 
-greet("Ortiz")
+// Se invoca a una función a través de una constante, que es una variable que almacena la función como valor
+greet("Miguel")
+
+
+// Pasar función como parámetro
 
 function processGreeting(greetFunction, name) {
     greetFunction(name)
 }
 
+processGreeting(greet, "Miguel R")
+
+
+// Función podría retornar otra función
+
 function returnGreeting() {
+    // aquí no le pasamos los parámetros a la función, sino que retornamos la función completa
     return greet
 }
 
-processGreeting(greet, "AntonioDev")
 const greet2 = returnGreeting()
-greet2("Ortiz Antonio")
+greet2("Miguel Romero")
+
+
 
 // Arrow functions avanzadas
 
@@ -31,7 +49,7 @@ console.log(multiply(2, 5))
 
 // - this léxico
 const handler = {
-    name: "Ortiz",
+    name: "Miguel",
     greeting: function () {
         console.log(`Hola, ${this.name}`)
     },
@@ -41,10 +59,18 @@ const handler = {
 }
 
 handler.greeting()
+
+// Cuidado que con arrow function, el ámbito cambia y no se puede acceder a las propiedades del objeto
 handler.arrowGreeting();
 
-// IIFE (Expresión de Función Invocada Inmediatamente)
 
+
+// IIFE (Inmediatly Invoque Function Expression - Expresión de Función Invocada Inmediatamente)
+
+//  Es importantísimo ponler un ; antes de la IIFE, ya que si no, puede dar problemas si la línea anterior no termina con un ;.
+// Esto es porque el intérprete de JavaScript puede interpretar la IIFE como una llamada a la función de la línea anterior.
+
+// No es necesario ponerle nombre a la función, ya que se invoca inmediatamente después de ser definida.
 (function () {
     console.log("IIFE clásico")
 })();

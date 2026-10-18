@@ -9,7 +9,7 @@ console.log(mySet)
 
 // Inicialización
 
-mySet = new Set(["Ortiz", "Antonio", "antoniodev", 37, true, "ortizantonio@antoniodev.com"])
+mySet = new Set(["Miguel", "Romero", "romerodev", 37, true, "Miguelromero@romerodev.com"])
 
 console.log(mySet)
 
@@ -17,23 +17,23 @@ console.log(mySet)
 
 // add y delete
 
-mySet.add("https://antonio.dev")
+mySet.add("https://romero.dev")
 
 console.log(mySet)
 
-mySet.delete("https://antonio.dev")
+mySet.delete("https://romero.dev")
 
 console.log(mySet)
 
-console.log(mySet.delete("Ortiz"))
+console.log(mySet.delete("Miguel"))
 console.log(mySet.delete(4))
 
 console.log(mySet)
 
 // has
 
-console.log(mySet.has("Antonio"))
-console.log(mySet.has("Ortiz"))
+console.log(mySet.has("Romero"))
+console.log(mySet.has("Miguel"))
 
 // size
 
@@ -50,8 +50,8 @@ console.log(mySet)
 
 // No admite duplicados
 
-mySet.add("ortizantonio@antoniodev.com")
-mySet.add("ortizantonio@antoniodev.com")
-mySet.add("ortizantonio@antoniodev.com")
-mySet.add("OrtizAntonio@antoniodev.com")
+mySet.add("Miguelromero@romerodev.com")
+mySet.add("Miguelromero@romerodev.com")
+mySet.add("Miguelromero@romerodev.com")
+mySet.add("MiguelRomero@romerodev.com")
 console.log(mySet)

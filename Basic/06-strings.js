@@ -28,7 +28,7 @@ console.log(greeting.includes("Hola")) // Incluye
 console.log(greeting.includes("Miguel"))
 console.log(greeting.includes("A"))
 console.log(greeting.slice(0, 10)) // Sección
-console.log(greeting.replace("Miguel", "Antonio")) // Reemplazo
+console.log(greeting.replace("Miguel", "Romero")) // Reemplazo
 
 // Template literals (plantillas literales)
 

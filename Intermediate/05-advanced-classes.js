@@ -16,7 +16,7 @@ class Person {
     }
 }
 
-const person = new Person("Ortiz", 37)
+const person = new Person("Miguel", 37)
 person.greet()
 
 person.sayAge = function () {
@@ -59,11 +59,11 @@ class Dog extends Animal {
     }
 }
 
-const cat = new Cat("AntonioCat")
+const cat = new Cat("RomeroCat")
 console.log(cat)
 cat.makeSound()
 
-const dog = new Dog("AntonioDog")
+const dog = new Dog("RomeroDog")
 console.log(dog)
 dog.makeSound()
 
@@ -82,12 +82,12 @@ class Dragon extends Animal { }
 Object.assign(Bird.prototype, FlyMixin)
 Object.assign(Dragon.prototype, FlyMixin)
 
-const bird = new Bird("AntonioBird")
+const bird = new Bird("RomeroBird")
 
 console.log(bird.name)
 bird.fly()
 
-const dragon = new Dragon("AntonioDragon")
+const dragon = new Dragon("RomeroDragon")
 
 console.log(dragon.name)
 dragon.fly()
@@ -105,13 +105,13 @@ class Session {
     }
 }
 
-const session1 = new Session("Ortiz Antonio")
+const session1 = new Session("Miguel Romero")
 const session2 = new Session()
 console.log(session1.name)
 console.log(session2.name)
 console.log(session1 === session2)
 
-const session3 = new Session("AntonioDev")
+const session3 = new Session("RomeroDev")
 console.log(session3.name)
 console.log(session2 === session3)
 
@@ -130,7 +130,7 @@ class User {
     }
 }
 
-const user = new User("Ortiz")
+const user = new User("Miguel")
 console.log(user.name)
 console.log(user.ID)
 console.log(user.getId())

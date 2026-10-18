@@ -197,11 +197,11 @@ class Fish extends Animal {
 
 }
 
-let myDog = new Dog("AntonioDog")
+let myDog = new Dog("RomeroDog")
 myDog.run()
 myDog.sound()
 
-let myFish = new Fish("AntonioFish", 10)
+let myFish = new Fish("RomeroFish", 10)
 myFish.swim()
 myFish.sound()
 

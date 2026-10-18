@@ -30,7 +30,7 @@ const miFuncionAnonimaconParametros = function (name) {
 }
 
 miFuncionAnonimaconParametros("Miguel")
-miFuncionAnonimaconParametros("Antonio")
+miFuncionAnonimaconParametros("Romero")
 
 
 // Funciones Flecha o Arrow functions
@@ -93,13 +93,13 @@ function funcionOrdenSuperior(funcion, parametros) {
     funcion(parametros)
 }
 
-funcionOrdenSuperior(miFuncionConParametros,"Antonio")
+funcionOrdenSuperior(miFuncionConParametros,"Romero")
 
 
 // forEach
 const myArray = [1, 2, 3, 4]
 
-const mySet = new Set(["Ortiz", "Antonio", "antoniodev", 37, true, "ortizantonio@antoniodev.com"])
+const mySet = new Set(["Miguel", "Romero", "romerodev", 37, true, "Miguelromero@romerodev.com"])
 
 const myMap = new Map([
     ["name", "Miguel"],
