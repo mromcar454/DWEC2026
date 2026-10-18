@@ -1,21 +1,53 @@
 
 
-// 1. Exporta una función
+import { Curso, nombreDelCurso, saludar } from "./modules/importables.js"
+import duplicar from "./modules/defaults/duplicar.js"
+import IVA from "./modules/defaults/iva.js"
+import Producto from "./modules/defaults/producto.js"
+import { crearMensaje, mensajeInicial, Mensaje } from "./modules/carpeta-uno/index.js"
+import { crearAviso, avisoInicial, Aviso } from "./modules/carpeta-dos/index.js"
 
-// 2. Exporta una constante
+// 1. Exporta una función.
+export function sumar(a, b) {
+	return a + b
+}
 
-// 3. Exporta una clase
+// 2. Exporta una constante.
+export const PI = 3.1416
 
-// 4. Importa una función
+// 3. Exporta una clase.
+export class Persona {
+	constructor(nombre) {
+		this.nombre = nombre
+	}
 
-// 5. Importa una constante
+	presentarse() {
+		return `Hola, soy ${this.nombre}.`
+	}
+}
 
-// 6. Importa una clase
+// 4. Importa una función.
+console.log(saludar("Lucía"))
 
-// 7. Exporta una función, una constante y una clase por defecto (en caso de que lo permita)
+// 5. Importa una constante.
+console.log("Curso:", nombreDelCurso)
 
-// 8. Importa una función, una constante y una clase por defecto (en caso de que lo permita)
+// 6. Importa una clase.
+const curso = new Curso("JavaScript")
+console.log(curso.presentar())
 
-// 9. Exporta una función, una constante y una clase desde una carpeta
+// 7. Cada archivo solo puede tener una exportación por defecto.
+// La función, la constante y la clase se exportan por defecto desde archivos distintos.
 
-// 10. Importa una función, una constante y una clase desde un directorio diferente al anterior
+// 8. Importa la función, la constante y la clase exportadas por defecto.
+console.log("Duplicar 4:", duplicar(4))
+console.log("IVA:", IVA)
+console.log("Producto:", new Producto("Cuaderno").nombre)
+
+// 9. Importa elementos que se exportan desde una carpeta.
+console.log(crearMensaje(mensajeInicial))
+console.log(new Mensaje("Hola desde la carpeta uno").texto)
+
+// 10. Importa elementos desde otro directorio.
+console.log(crearAviso(avisoInicial))
+console.log(new Aviso("Hola desde la carpeta dos").texto)

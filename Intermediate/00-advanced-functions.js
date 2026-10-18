@@ -79,7 +79,23 @@ handler.arrowGreeting();
     console.log("IIFE con arrow function")
 })();
 
+// Para qué sirve una IIFE? Para encapsular código y evitar que las variables definidas dentro de la IIFE se filtren al ámbito global. 
+// Esto es útil para evitar conflictos de nombres y mantener el código más limpio y modular.
+
 // Parámetros Rest (...)
+
+// Los parámetros rest permiten a una función aceptar un número indefinido de argumentos como un array,
+//  proporcionando una forma más flexible de manejar los argumentos de la función.
+
+function sum1(...numbers) {
+        console.log(numbers)
+}
+sum1([1, 2, 3, 4, 5])
+
+// Fijaros, mete el resultado dentro de un array, ya que el parámetro rest recoge todos los argumentos en un array.
+
+sum1(1, 2, 3, 4, 5)
+sum1(1, 2, 3)
 
 function sum(...numbers) {
     let result = 0
@@ -93,16 +109,63 @@ console.log(sum(1, 2, 3, 4, 5))
 console.log(sum(10, 15))
 
 // Operador Spread (...)
-
+// Propaga los elementos de un array o las propiedades de un objeto en otro array u objeto, respectivamente.
 const numbers = [1, 2, 3]
 function sumWithSpread(a, b, c) {
     return a + b + c
 }
 
 console.log(sumWithSpread(1, 2, 3)) // Sin Spread
-console.log(sumWithSpread(...numbers)) // Con Spread
+console.log(sumWithSpread(...numbers)) // Con Spread lo expande, lo que hace es propagar los elementos del array como argumentos individuales para la función sumWithSpread
+//  es como si hiciera:
+console.log(sumWithSpread(numbers[0], numbers[1], numbers[2])) // Sin Spread
 
 // Closures (Clausuras)
+
+
+function createCounter1() {
+    let counter = 0
+    function executeCounter() {
+        counter++
+        console.log(`Contador: ${counter}`)
+    }
+    executeCounter()
+}
+
+createCounter1()
+createCounter1()
+
+
+// Como es ciudadano de primera clase hacemos lo siguiente:
+
+function createCounter2() {
+    let counter = 0
+    function executeCounter() {
+        counter++
+        console.log(`Contador: ${counter}`)
+    }
+    executeCounter()
+}
+
+const counter1 = createCounter2()
+// Nos dice que counter no es una función porque no devuelve un return.
+
+function createCounter2() {
+    let counter = 0
+    return function () {
+        counter++
+        console.log(`Contador: ${counter}`)
+    }    
+}
+
+const counter2 = createCounter2()
+counter2()
+counter2()
+counter2()
+counter2()
+
+
+
 
 function createCounter() {
     let counter = 0
@@ -117,6 +180,12 @@ counter()
 counter()
 counter()
 counter()
+
+const otroCounter = createCounter()
+otroCounter()
+otroCounter()
+otroCounter()
+
 
 // Recursividad
 
