@@ -4,7 +4,6 @@
 /*
 Los módulos externos o módulos del entorno son librerías de código que no forman parte del núcleo del lenguaje JavaScript nativo (como Math, Array o Date), sino que son proporcionados por el entorno de ejecución donde corre tu código (como Node.js) o por la comunidad de desarrolladores.
 
-En el código que muestras se utiliza Node.js, un entorno que permite ejecutar JavaScript en el servidor o en la terminal del sistema operativo, fuera del navegador web.
 
 Tipos de módulos fuera del JS nativo
 Módulos del Core (Nativos de Node.js):
@@ -52,19 +51,18 @@ console.log(os.totalmem())
 console.log(os.freemem())
 
 
-/*
 
-Para importar el módulo os usando la sintaxis moderna de ES Modules (import) en lugar de require, puedes hacerlo directamente así:
 
-JavaScript
+// Para importar el módulo os usando la sintaxis moderna de ES Modules (import) en lugar de require, puedes hacerlo directamente así:
+
 // Opción 1: Importar todo el módulo como un objeto
 import os from "node:os"
 
 console.log(os.platform())
 console.log(os.arch())
-También puedes importar solo las funciones específicas que vayas a usar:
+// También puedes importar solo las funciones específicas que vayas a usar:
 
-JavaScript
+
 // Opción 2: Importación nombrada
 import { platform, arch, totalmem, freemem } from "node:os"
 
@@ -72,17 +70,18 @@ console.log(platform())
 console.log(arch())
 console.log(totalmem())
 console.log(freemem())
-Buena práctica: Usar el prefijo node: (como en "node:os") es la convención moderna recomendada en Node.js. Le indica explícitamente al entorno que es un módulo nativo del sistema y evita conflictos con paquetes instalados. Aunque escribir "os" a secas también funciona, se prefiere "node:os".
+// Buena práctica: Usar el prefijo node: (como en "node:os") es la convención moderna recomendada en Node.js.
+// Le indica explícitamente al entorno que es un módulo nativo del sistema y evita conflictos con paquetes instalados. Aunque escribir "os" a secas también funciona, se prefiere "node:os".
 
-Requisito para que funcione en Node.js
-Para que Node.js te permita usar import en lugar de require, debes habilitar el soporte de módulos ECMAScript mediante una de estas dos opciones:
+// Requisito para que funcione en Node.js
+// Para que Node.js te permita usar import en lugar de require, debes habilitar el soporte de módulos ECMAScript 
+// mediante una de estas dos opciones:
 
-1.- En el package.json (Recomendado): Añade la propiedad "type": "module" en la raíz de tu proyecto:
+// 1.- En el package.json (Recomendado): Añade la propiedad "type": "module" en la raíz de tu proyecto:
 
 JSON
 {
   "type": "module"
 }
-2.-  Cambiando la extensión: Renombra tu archivo de .js a .mjs (por ejemplo, app.mjs).
+// 2.-  Cambiando la extensión: Renombra tu archivo de .js a .mjs (por ejemplo, app.mjs).
 
-*/

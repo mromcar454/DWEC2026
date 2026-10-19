@@ -44,7 +44,8 @@ console.info("Este es un mensaje de información adicional")
 
 // table
 
-// Formatea y muestra datos estructurados (como arrays u objetos) en una tabla visual con filas y columnas.
+// Formatea y muestra datos estructurados (como arrays u objetos)
+// en una tabla visual con filas y columnas.
 //  Es mucho más cómodo de leer que un console.log() tradicional.
 
 // Con arrays bidimensionales (matriz):
