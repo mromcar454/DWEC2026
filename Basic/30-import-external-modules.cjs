@@ -2,7 +2,8 @@
 // Módulos externos
 
 /*
-Los módulos externos o módulos del entorno son librerías de código que no forman parte del núcleo del lenguaje JavaScript nativo (como Math, Array o Date), sino que son proporcionados por el entorno de ejecución donde corre tu código (como Node.js) o por la comunidad de desarrolladores.
+Los módulos externos o módulos del entorno son librerías de código que no forman parte del núcleo del lenguaje JavaScript nativo (como Math, Array o Date),
+ sino que son proporcionados por el entorno de ejecución donde corre tu código (como Node.js) o por la comunidad de desarrolladores.
 
 
 Tipos de módulos fuera del JS nativo
