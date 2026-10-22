@@ -7,13 +7,20 @@ Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=4112
 
 // 2. Implementa una función currificada que multiplique 3 números
 
+
+// función currificada es una técnica de la programación funcional que
+// consiste en transformar una función que acepta múltiples argumentos
+// en una secuencia de funciones anidadas, donde cada una de ellas recibe un único argumento.
+
 // 3. Desarrolla una función recursiva que calcule la potencia de un número elevado a un exponente
 
 // 4. Crea una función createCounter() que reciba un valor inicial y retorne un objeto con métodos para increment(), decrement() y getValue(), utilizando un closure para mantener el estado
 
-// 5. Crea una función sumManyTimes(multiplier, ...numbers) que primero sume todos los números (usando parámetros Rest) y luego multiplique el resultado por multiplier
+// 5. Crea una función sumManyTimes(multiplier, ...numbers) que primero sume todos los números
+// (usando parámetros Rest) y luego multiplique el resultado por multiplier
 
-// 6. Crea un Callback que se invoque con el resultado de la suma de todos los números que se le pasan a una función
+// 6. Crea un Callback que se invoque con el resultado de la suma de todos los
+// números que se le pasan a una función
 
 // 7. Desarrolla una función parcial
 

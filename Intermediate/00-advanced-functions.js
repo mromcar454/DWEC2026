@@ -88,11 +88,12 @@ handler.arrowGreeting();
 //  proporcionando una forma más flexible de manejar los argumentos de la función.
 
 function sum1(...numbers) {
-        console.log(numbers)
+    console.log(numbers)
 }
 sum1([1, 2, 3, 4, 5])
 
-// Fijaros, mete el resultado dentro de un array, ya que el parámetro rest recoge todos los argumentos en un array.
+// Fijaros, mete el resultado dentro de un array,
+// ya que el parámetro rest recoge todos los argumentos en un array.
 
 sum1(1, 2, 3, 4, 5)
 sum1(1, 2, 3)
@@ -109,19 +110,19 @@ console.log(sum(1, 2, 3, 4, 5))
 console.log(sum(10, 15))
 
 // Operador Spread (...)
-// Propaga los elementos de un array o las propiedades de un objeto en otro array u objeto, respectivamente.
+// Propaga los elementos de un array o las propiedades de un objeto en otro array u objeto,respectivamente.
 const numbers = [1, 2, 3]
 function sumWithSpread(a, b, c) {
     return a + b + c
 }
 
 console.log(sumWithSpread(1, 2, 3)) // Sin Spread
-console.log(sumWithSpread(...numbers)) // Con Spread lo expande, lo que hace es propagar los elementos del array como argumentos individuales para la función sumWithSpread
+console.log(sumWithSpread(...numbers)) // Con Spread lo expande, lo que hace es propagar
+//  los elementos del array como argumentos individuales para la función sumWithSpread
 //  es como si hiciera:
 console.log(sumWithSpread(numbers[0], numbers[1], numbers[2])) // Sin Spread
 
 // Closures (Clausuras)
-
 
 function createCounter1() {
     let counter = 0
@@ -133,6 +134,7 @@ function createCounter1() {
 }
 
 createCounter1()
+// El contador se queda en 1
 createCounter1()
 
 
@@ -148,23 +150,11 @@ function createCounter2() {
 }
 
 const counter1 = createCounter2()
-// Nos dice que counter no es una función porque no devuelve un return.
 
-function createCounter2() {
-    let counter = 0
-    return function () {
-        counter++
-        console.log(`Contador: ${counter}`)
-    }    
-}
+// Error Nos dice que counter no es una función porque no devuelve un return.
 
-const counter2 = createCounter2()
-counter2()
-counter2()
-counter2()
-counter2()
-
-
+// counter1()
+// counter1()
 
 
 function createCounter() {
@@ -189,14 +179,77 @@ otroCounter()
 
 // Recursividad
 
-function factorial(n) {
-    if (n <= 1) {
-        return 1
+
+ // La recursividad intenta descomponer un problema grande en una versión idéntica pero más pequeña,
+ // hasta llegar a un caso tan simple que se resuelve directamente sin más llamadas.
+ // 1. La lógica matemática (La analogía de la muñeca rusa)
+ // El factorial de un número n (denotado n!) es la multiplicación de todos los enteros desde 1 hasta n.
+ //  4! = 4 x 3 x 2 x 1 = 24 
+ //  3! = 3 \times 2 \times 1 = 6 \end{aligned}$$
+ // 
+ // De aquí se deduce la regla clave: $4! = 4  3!. 
+ // En términos generales:n! = n x (n - 1)!
+ // Para resolver n!, necesitas saber cuánto vale (n-1)!. Y para saber (n-1)!, necesitas (n-2)!, 
+ // hasta llegar al caso base: por definición, 0! = 1 y 1! = 1.
+ // 
+ // 2. Implementación en JavaScript
+
+
+ function factorial(n) {
+    // 1. CASO BASE: La condición de parada
+    if (n === 0 || n === 1) {
+        return 1;
     }
-    return n * factorial(n - 1)
+    // 2. CASO RECURSIVO: La función se llama a sí misma con un problema más pequeño
+    return n * factorial(n - 1);
 }
 
-console.log(factorial(5))
+console.log(factorial(4)); // 24
+
+
+// Comparación con implementación iterativa:
+function factorialIterativo(n) {
+  let resultado = 1;
+
+  for (let i = 2; i <= n; i++) {
+    resultado *= i; // Multiplica acumulando el resultado
+  }
+
+  return resultado;
+}
+
+console.log(factorialIterativo(4)); // 24
+
+
+// 3. La Pila de Llamadas (Call Stack): Viaje de Ida y Vuelta
+// 
+// Fase 1: La Fase de Expansión (Viaje de Ida / "Poner platos en la pila")
+// Cada llamada queda en pausa esperando la respuesta de la siguiente:
+// factorial(4) evalúa 4 * factorial(3) -> Pausa. Llama a factorial(3)
+// factorial(3) evalúa 3 * factorial(2) -> Pausa. Llama a factorial(2)
+// factorial(2) evalúa 2 * factorial(1) -> Pausa. Llama a factorial(1)
+// factorial(1) detecta el caso base (n === 1) y devuelve 1.
+// 
+// Fase 2: La Fase de Extracción (Viaje de Vuelta / "Desapilar")
+// 
+// Los resultados se devuelven hacia arriba:
+// factorial(1) retorna 1.
+// factorial(2) reanuda: 2 x 1 = 2.
+// factorial(3) reanuda: 3 x 2 = 6.
+// factorial(4) reanuda: 4 x 6 = 24.
+// 
+
+// 4. Puntos clave 
+// Toda función recursiva necesita dos partes obligatorias:
+// Caso base: La salida de emergencia. Sin él, la función se llama infinitamente hasta
+// provocar un error (RangeError: Maximum call stack size exceeded).
+// Caso recursivo: El paso que reduce la distancia hacia el caso base
+// (siempre debe avanzar restando o dividiendo, ej. n - 1).
+// 
+// Comparación con el bucle for: La recursividad no usa variables de estado externas ni índices explícitos;
+// confía en el propio contexto de ejecución de las funciones para guardar el estado temporal.
+
+
 
 // Funciones parciales
 
@@ -205,6 +258,22 @@ function partialSum(a) {
         return sum(a, b, c)
     }
 }
+ // Una aplicación parcial (o función parcial) es una técnica de programación funcional que consiste
+ // en fijar previamente uno o más argumentos de una función original,
+ // devolviendo una nueva función que acepta los argumentos restantes.
+
+// partialSum(a) recibe únicamente el primer argumento (a).
+
+// Retorna una nueva función que espera los dos argumentos faltantes (b y c).
+
+// Mantiene en memoria el valor de a mediante un closure (clausura).
+
+// Cuando se ejecuta la función resultante con (b, c), esta evalúa sum(a, b, c) combinando el valor guardado de a con los nuevos valores de b y c.
+
+
+//Clausura (Closure): La función devuelta "recuerda" el ámbito donde fue creada y conserva el acceso al parámetro a, incluso después de que partialSum haya finalizado su ejecución.
+
+// Especialización: Permite reutilizar lógica común creando funciones específicas a partir de una función general (por ejemplo, fijar un tipo de IVA o una configuración por defecto en vez de pasarla en cada llamada).
 
 const sumWith = partialSum(4)
 console.log(sumWith(2, 3))
@@ -248,3 +317,5 @@ processData([1, 2, 3], processResult2)
 processData([1, 2, 3], (result) => {
     console.log(`Mi resultado en la arrow function es: ${result}`)
 })
+
+*/
