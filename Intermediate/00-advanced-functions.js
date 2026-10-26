@@ -318,4 +318,3 @@ processData([1, 2, 3], (result) => {
     console.log(`Mi resultado en la arrow function es: ${result}`)
 })
 
-*/
