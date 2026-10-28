@@ -300,9 +300,37 @@ console.log(sumAB(5)(7))
 // Callbacks
 
 function processData(data, callback) {
+    console.log(sum(...data))
+    
+}
+
+processData([1,2,3])
+
+
+
+// Ahora en vez de console log guardamos el resultado y llamamos a una función que muestre el resultado
+function processData(data, callback) {
+    const result = sum(...data)
+    callback(result)
+    
+}
+
+function processResult(data){
+    console.log(data)
+}
+
+processData([1,2,3], processResult)
+
+
+
+
+
+
+function processData2(data, callback) {
     const result = sum(...data)
     callback(result)
 }
+
 
 function processResult(result) {
     console.log(result)

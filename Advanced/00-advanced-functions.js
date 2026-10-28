@@ -114,7 +114,6 @@ function sum(...numbers) {
    return result
 }
 
-
 console.log(sum(1,2,3,4,5)) // 15
 console.log(sum(1,1, 2,3)) // 6
 console.log(sum(1,2,3,4,5,6,7,8,9)) // 45
@@ -396,9 +395,13 @@ console.log(`El total con descuento es ${total3}`)
 
 const totalBF = crearDescuento(20)(30,3)
 console.log(`El total con descuento es ${totalBF}`)
+const totalCD = crearDescuento(20)
+console.log(totalCD(5,10))
 
 
-// Curryng
+
+
+// Curryng o Acarreo
 
 function currySum(a) {
     return function (b){
@@ -410,7 +413,9 @@ function currySum(a) {
     }
 }
 
-const sumAB = currySum(1)(2)
+console.log(currySum(1)(2)(3)(4))
+
+const sumAB = currySum(1)
 
 const sumC = sumAB(3)
 
@@ -419,21 +424,15 @@ console.log(sumC(4))
 console.log("Estamos aquí")
 console.log(sumAB(5)(7))
 
-
 // Currying con sintaxis 
-
 
 const calculateTotal = (taxRate) => (shippingCost) => (price) => {
     return price + (price * taxRate) + shippingCost;
 };
 
-
-
 // 1. Preconfiguramos la tasa de IVA (ej. 21% para España)
 const calculateSpainTotal = calculateTotal(0.21);
 
-
-if (urgente)
 // 2. Preconfiguramos una tarifa de envío estándar (5€)
 const calculateStandardSpainTotal = calculateSpainTotal(5);
 
