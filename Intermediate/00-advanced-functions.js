@@ -28,7 +28,6 @@ function processGreeting(greetFunction, name) {
 
 processGreeting(greet, "Miguel R")
 
-
 // Función podría retornar otra función
 
 function returnGreeting() {
@@ -309,7 +308,7 @@ processData([1,2,3])
 
 
 // Ahora en vez de console log guardamos el resultado y llamamos a una función que muestre el resultado
-function processData(data, callback) {
+function processData2(data, callback) {
     const result = sum(...data)
     callback(result)
     

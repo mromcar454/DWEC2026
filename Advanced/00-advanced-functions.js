@@ -391,13 +391,10 @@ console.log(`El total con descuento es ${total2}`)
 const total3 = crearDescuento(15)(105,5)
 console.log(`El total con descuento es ${total3}`)
 
-
-
 const totalBF = crearDescuento(20)(30,3)
 console.log(`El total con descuento es ${totalBF}`)
 const totalCD = crearDescuento(20)
 console.log(totalCD(5,10))
-
 
 
 
@@ -426,9 +423,8 @@ console.log(sumAB(5)(7))
 
 // Currying con sintaxis 
 
-const calculateTotal = (taxRate) => (shippingCost) => (price) => {
-    return price + (price * taxRate) + shippingCost;
-};
+const calculateTotal = (taxRate) => (shippingCost) => (price) => price + (price * taxRate) + shippingCost
+
 
 // 1. Preconfiguramos la tasa de IVA (ej. 21% para España)
 const calculateSpainTotal = calculateTotal(0.21);
@@ -444,3 +440,40 @@ console.log(calculateStandardSpainTotal(50));  // 50 + 10.5 (IVA) + 5 (envío) =
 const calculateExpressSpainTotal = calculateSpainTotal(10);
 
 console.log(calculateExpressSpainTotal(100)); // 100 + 21 (IVA) + 10 (envío exprés) = 131
+
+// Callbacks
+
+
+function sum4(...numbers) {
+   let result = 0
+   for (let number of numbers) {
+        result += number
+   }
+   return result
+}
+
+function processData(data, callback) {
+    console.log(sum4(...data))
+}
+
+
+function processData2(data, callback) {
+    const result = sum4(...data)
+    callback(result)
+}
+
+function processResult(data){
+    console.log(data)
+}
+
+function processResult2(data){
+    console.log(`El resultado de los datos suministrados son ${data}`)
+}
+
+
+processData2([1,2,3], processResult)
+processData2([1,2,3], processResult2)
+
+processData2([1,2,3], (data) => {
+    console.log(`El resultado de los datos suministrados son ${data}`)
+})

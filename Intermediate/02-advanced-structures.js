@@ -15,12 +15,6 @@ let numbers = [1, 2, 3, 4, 5, 6]
 numbers.forEach(element => console.log(element))
 
 
-
-
-
-
-
-
 // map
 // Recorre el array y devuelve un nuevo array del mismo tamaño, // donde cada elemento ha sido transformado por la función que le pases
 
@@ -34,7 +28,8 @@ let evens = numbers.filter(element => element % 2 === 0)
 console.log(evens)
 
 // reduce
-// El acumulador: Recorre el array y lo colapsa a un único valor final (un número, un texto, un objeto, etc.) combinando los elementos uno a uno.
+// El acumulador: Recorre el array y lo colapsa a un único valor final (un número, un texto, un objeto, etc.) 
+// combinando los elementos uno a uno.
 
 let sum = numbers.reduce((result, current) => result + current, 0)
 console.log(sum)

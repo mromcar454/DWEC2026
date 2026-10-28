@@ -15,7 +15,8 @@ const multiplicarTres = (a) => (b) => (c) => a * b * c;
 console.log(multiplicarTres(2)(3)(4)); // 24
 
 
-// función currificada es una técnica de la programación funcional que consiste en transformar una función que acepta múltiples argumentos
+// función currificada es una técnica de la programación funcional que consiste en transformar
+//  una función que acepta múltiples argumentos
 // en una secuencia de funciones anidadas, donde cada una de ellas recibe un único argumento.
 
 // 3. Desarrolla una función recursiva que calcule la potencia de un número elevado a un exponente
@@ -82,3 +83,6 @@ const temporizador = {
 };
 
 temporizador.iniciar(); // Después de 1 seg: "Iniciado por: Reloj principal"
+
+
+
