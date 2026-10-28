@@ -10,6 +10,8 @@ console.log(mySet)
 // Inicialización
 mySet = new Set(["Hola", "Mundo",37, true, "mromcar454@g.educaand.es"])
 
+
+
 console.log(mySet)
 
 // Métodos comunes
