@@ -1,0 +1,245 @@
+PRUEBA DE FUNCIONES AVANZADAS EN JAVASCRIPT
+==================================================
+
+Curso: 2.º de Grado Superior de Desarrollo Web
+Módulo: Desarrollo web en entorno cliente
+Duración orientativa: 90 minutos
+Puntuación total: 10 puntos
+
+
+INSTRUCCIONES GENERALES
+-----------------------
+
+- No utilices librerías externas.
+- Respeta los nombres y parámetros indicados en cada ejercicio.
+- Las funciones deben devolver los resultados mediante return, salvo que se
+  indique lo contrario.
+- Se valorará la claridad y organización del código.
+- Puedes utilizar métodos básicos de arrays y strings.
+
+
+EJERCICIO 1. RECURSIVIDAD: SUMA DE DÍGITOS (2 PUNTOS)
+------------------------------------------------------
+
+Implementa una función llamada sumarDigitos(numero) que reciba un número
+entero positivo y devuelva la suma de todos sus dígitos utilizando
+recursividad.
+
+No se permite convertir el número a una cadena de texto.
+
+Ejemplos:
+
+sumarDigitos(1234); // 10
+sumarDigitos(508);  // 13
+sumarDigitos(7);    // 7
+sumarDigitos(1000); // 1
+
+Requisitos:
+
+- Debe existir un caso base.
+- La función debe realizar una llamada recursiva.
+- No se permite utilizar bucles.
+- Se puede utilizar el operador % y Math.floor().
+
+
+EJERCICIO 2. PARÁMETROS REST Y OPERADOR SPREAD (2 PUNTOS)
+----------------------------------------------------------
+
+Implementa una función llamada crearPerfil(nombre, edad, ...aficiones) que
+devuelva un objeto con la siguiente estructura:
+
+{
+    nombre: "Ana",
+    edad: 20,
+    aficiones: ["leer", "nadar", "viajar"]
+}
+
+Después, implementa una función llamada combinarPerfiles(...perfiles) que
+reciba un número variable de perfiles y devuelva un nuevo array con todos
+ellos.
+
+Para realizar la llamada de prueba se debe utilizar el operador Spread.
+
+Ejemplo:
+
+const aficiones = ["leer", "nadar", "viajar"];
+
+const perfil1 = crearPerfil("Ana", 20, ...aficiones);
+const perfil2 = crearPerfil("Luis", 22, "videojuegos", "cine");
+
+const perfiles = combinarPerfiles(...[perfil1, perfil2]);
+
+console.log(perfiles);
+
+Resultado esperado:
+
+[
+    {
+        nombre: "Ana",
+        edad: 20,
+        aficiones: ["leer", "nadar", "viajar"]
+    },
+    {
+        nombre: "Luis",
+        edad: 22,
+        aficiones: ["videojuegos", "cine"]
+    }
+]
+
+Requisitos:
+
+- Utiliza parámetros Rest en las funciones.
+- Utiliza el operador Spread en las llamadas de prueba.
+- No accedas a arguments.
+
+
+EJERCICIO 3. CLAUSURAS: SISTEMA DE PUNTOS (2 PUNTOS)
+-----------------------------------------------------
+
+Implementa una función crearCuentaPuntos(puntosIniciales) que devuelva un
+objeto con los siguientes métodos:
+
+- sumar(puntos): añade puntos a la cuenta.
+- restar(puntos): resta puntos, sin permitir que el total sea negativo.
+- consultar(): devuelve la cantidad actual de puntos.
+
+La cantidad de puntos debe mantenerse mediante una clausura. La variable que
+almacena los puntos no puede ser accesible directamente desde fuera.
+
+Ejemplo:
+
+const cuenta = crearCuentaPuntos(100);
+
+cuenta.sumar(50);
+console.log(cuenta.consultar()); // 150
+
+cuenta.restar(80);
+console.log(cuenta.consultar()); // 70
+
+cuenta.restar(100);
+console.log(cuenta.consultar()); // 0
+
+Además, comprueba que dos cuentas mantienen estados independientes:
+
+const cuentaA = crearCuentaPuntos(10);
+const cuentaB = crearCuentaPuntos(50);
+
+cuentaA.sumar(5);
+
+console.log(cuentaA.consultar()); // 15
+console.log(cuentaB.consultar()); // 50
+
+Requisitos:
+
+- Utiliza una clausura.
+- No utilices una propiedad pública para guardar los puntos.
+- Cada llamada a crearCuentaPuntos debe generar un estado independiente.
+
+
+EJERCICIO 4. CURRYING O ACARREO: CÁLCULO DEL PRECIO FINAL (2 PUNTOS)
+---------------------------------------------------------------------
+
+Implementa una función currificada llamada calcularPrecioFinal que permita
+calcular el precio final de un producto aplicando:
+
+1. Un porcentaje de IVA.
+2. Un porcentaje de descuento.
+3. Un coste de envío.
+4. El precio original.
+
+La función debe recibir los parámetros uno a uno:
+
+calcularPrecioFinal(iva)(descuento)(envio)(precio)
+
+La fórmula será:
+
+precioConDescuento = precio - precio * descuento
+precioConIva = precioConDescuento + precioConDescuento * iva
+precioFinal = precioConIva + envio
+
+Los porcentajes se recibirán como decimales:
+
+- 21 % se representa como 0.21.
+- 10 % se representa como 0.10.
+
+Ejemplo:
+
+const calcularPrecioEspaña = calcularPrecioFinal(0.21);
+const calcularPrecioConDescuento = calcularPrecioEspaña(0.10);
+const calcularPrecioConEnvio = calcularPrecioConDescuento(5);
+
+console.log(calcularPrecioConEnvio(100)); // 113.9
+
+Cálculo:
+
+100 - 10 = 90
+90 + 18.9 = 108.9
+108.9 + 5 = 113.9
+
+Requisitos:
+
+- Cada función debe recibir un único parámetro.
+- Debe poder reutilizarse una configuración parcial.
+- No se permite implementar la función recibiendo los cuatro parámetros a la
+  vez.
+
+
+EJERCICIO 5. CALLBACKS: PROCESAMIENTO DE PRODUCTOS (2 PUNTOS)
+--------------------------------------------------------------
+
+Implementa una función llamada procesarProductos(productos, callback).
+
+El parámetro productos será un array de objetos con esta estructura:
+
+const productos = [
+    { nombre: "Teclado", precio: 30 },
+    { nombre: "Ratón", precio: 15 },
+    { nombre: "Monitor", precio: 200 }
+];
+
+La función debe calcular el precio total de todos los productos y pasar el
+resultado al callback.
+
+El callback recibirá dos parámetros:
+
+1. El precio total.
+2. La cantidad de productos procesados.
+
+Ejemplo:
+
+procesarProductos(productos, (total, cantidad) => {
+    console.log(`Se han procesado ${cantidad} productos`);
+    console.log(`El precio total es ${total} euros`);
+});
+
+Resultado esperado:
+
+Se han procesado 3 productos
+El precio total es 245 euros
+
+Utiliza también la función con otro callback que calcule y muestre el precio
+medio:
+
+procesarProductos(productos, (total, cantidad) => {
+    console.log(`El precio medio es ${total / cantidad} euros`);
+});
+
+Requisitos:
+
+- procesarProductos debe recibir y utilizar un callback.
+- El callback debe ejecutarse después de calcular los datos.
+- La función debe funcionar con cualquier array de productos.
+- No se debe escribir el mensaje directamente dentro de
+  procesarProductos.
+
+
+CRITERIOS GENERALES DE CORRECCIÓN
+----------------------------------
+
+- Se valorará el uso correcto de la técnica solicitada en cada ejercicio.
+- Una solución que produzca el resultado correcto, pero no utilice la técnica
+  solicitada, no obtendrá toda la puntuación.
+- Se podrán descontar hasta 0.5 puntos por errores de sintaxis o código que
+  no pueda ejecutarse.
+- Se podrán descontar hasta 0.5 puntos por no respetar los nombres o
+  parámetros indicados.
