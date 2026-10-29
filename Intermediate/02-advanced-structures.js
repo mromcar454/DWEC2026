@@ -85,10 +85,23 @@ console.log(words)
 
 let unsorted = ["b", "a", "d", "c"]
 let sorted = unsorted.sort()
+// .sort() sin argumentos ordena alfabéticamente (convirtiendo a texto).
+// Convierte todos los elementos a strings y los compara lexicográficamente 
+// según su valor Unicode UTF-16.
+// Problema con números: Si se aplicara a números sin la función comparadora,
+//  [3, 4, 1, 6, 10] daría como resultado [1, 10, 3, 4, 6], ya que la cadena "10" precede a "3".
 console.log(sorted)
+// ¿Modifican el array original?
+// Valor devuelto: Devuelve la referencia al mismo array ya invertido??
+console.log(unsorted)
 
 unsorted = [3, 4, 1, 6, 10]
 sorted = unsorted.sort((a, b) => a - b)
+
+// Evalúa matemáticamente los pares de números mediante la resta:
+// Si a - b < 0: coloca a antes que b.
+// Si a - b > 0: coloca b antes que a.
+//Si a - b === 0: mantiene el orden original entre ambos.
 
 console.log(sorted)
 
@@ -96,6 +109,11 @@ console.log(sorted)
 
 sorted.reverse()
 console.log(sorted)
+
+// Modifica el array original: No crea una copia nueva; altera directamente el array sobre el que se invoca.
+
+// Valor devuelto: Devuelve la referencia al mismo array ya invertido.
+
 
 // - Búsqueda
 
@@ -108,11 +126,19 @@ console.log(sorted.includes(5))
 
 let firstEven = sorted.find(element => element % 2 === 0)
 console.log(firstEven)
+// Recorre el array de izquierda a derecha buscando el primer elemento que haga que la condición sea verdadera (true).
+
+// Devuelve: El elemento/valor encontrado. Si ningún elemento cumple la condición, devuelve undefined.
+
 
 // findIndex
 
 let firstEvenIndex = sorted.findIndex(element => element % 2 === 0)
 console.log(firstEvenIndex)
+
+// Qué hace: Realiza la misma búsqueda de izquierda a derecha, pero registra la posición.
+
+// Devuelve: El índice numérico (empezando en 0) de la posición donde está ese elemento. Si no encuentra ninguno, devuelve -1.
 
 // Sets avanzados
 

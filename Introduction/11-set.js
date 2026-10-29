@@ -1,4 +1,4 @@
-// Conjuntos
+/ Conjuntos
 
 // Declaración
 
