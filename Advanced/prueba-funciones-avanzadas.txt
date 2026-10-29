@@ -93,170 +93,114 @@ Requisitos:
 - No accedas a arguments.
 
 
-EJERCICIO 3. CLAUSURAS: SISTEMA DE PUNTOS (2 PUNTOS)
------------------------------------------------------
+EJERCICIO 3. CLAUSURAS: GENERADOR DE IDENTIFICADORES (2 PUNTOS)
+---------------------------------------------------------------
 
-Implementa una función crearCuentaPuntos(puntosIniciales) que devuelva un
-objeto con los siguientes métodos:
-
-- sumar(puntos): añade puntos a la cuenta.
-- restar(puntos): resta puntos, sin permitir que el total sea negativo.
-- consultar(): devuelve la cantidad actual de puntos.
-
-La cantidad de puntos debe mantenerse mediante una clausura. La variable que
-almacena los puntos no puede ser accesible directamente desde fuera.
+Implementa una función crearGenerador(prefijo) que devuelva otra función.
+Cada vez que se ejecute la función devuelta debe generar un identificador
+distinto, formado por el prefijo, un guion y un número consecutivo que
+empiece en 1.
 
 Ejemplo:
 
-const cuenta = crearCuentaPuntos(100);
+const generarAlumno = crearGenerador("ALU");
 
-cuenta.sumar(50);
-console.log(cuenta.consultar()); // 150
+console.log(generarAlumno()); // "ALU-1"
+console.log(generarAlumno()); // "ALU-2"
+console.log(generarAlumno()); // "ALU-3"
 
-cuenta.restar(80);
-console.log(cuenta.consultar()); // 70
+Comprueba también que dos generadores mantienen contadores independientes:
 
-cuenta.restar(100);
-console.log(cuenta.consultar()); // 0
+const generarProducto = crearGenerador("PRO");
 
-Además, comprueba que dos cuentas mantienen estados independientes:
-
-const cuentaA = crearCuentaPuntos(10);
-const cuentaB = crearCuentaPuntos(50);
-
-cuentaA.sumar(5);
-
-console.log(cuentaA.consultar()); // 15
-console.log(cuentaB.consultar()); // 50
+console.log(generarProducto()); // "PRO-1"
+console.log(generarAlumno());   // "ALU-4"
 
 Requisitos:
 
-- Utiliza una clausura.
-- No utilices una propiedad pública para guardar los puntos.
-- Cada llamada a crearCuentaPuntos debe generar un estado independiente.
+- Utiliza una clausura para guardar el contador.
+- El contador no puede ser una propiedad pública ni una variable global.
+- Cada llamada a crearGenerador debe crear un contador independiente.
 
 
-EJERCICIO 4. CURRYING O ACARREO: CÁLCULO DEL PRECIO FINAL (2 PUNTOS)
----------------------------------------------------------------------
+EJERCICIO 4. CURRYING O ACARREO: CLASIFICACIÓN DE NOTAS (2 PUNTOS)
+------------------------------------------------------------------
 
-Implementa una función currificada llamada calcularPrecioFinal que permita
-calcular el precio final de un producto aplicando:
-
-1. Un porcentaje de IVA.
-2. Un porcentaje de descuento.
-3. Un coste de envío.
-4. El precio original.
+Implementa una función currificada llamada clasificarNota que reciba una nota
+mínima para aprobar y después una nota. Debe devolver "Aprobado" si la nota
+es mayor o igual que la mínima y "Suspenso" en caso contrario.
 
 La función debe recibir los parámetros uno a uno:
 
-calcularPrecioFinal(iva)(descuento)(envio)(precio)
-
-La fórmula será:
-
-precioConDescuento = precio - precio * descuento
-precioConIva = precioConDescuento + precioConDescuento * iva
-precioFinal = precioConIva + envio
-
-Los porcentajes se recibirán como decimales:
-
-- 21 % se representa como 0.21.
-- 10 % se representa como 0.10.
+clasificarNota(minimo)(nota)
 
 Ejemplo:
 
-const calcularPrecioEspaña = calcularPrecioFinal(0.21);
-const calcularPrecioConDescuento = calcularPrecioEspaña(0.10);
-const calcularPrecioConEnvio = calcularPrecioConDescuento(5);
+const clasificar = clasificarNota(5);
 
-console.log(calcularPrecioConEnvio(100)); // 113.9
+console.log(clasificar(7)); // "Aprobado"
+console.log(clasificar(4)); // "Suspenso"
 
-Cálculo:
+La función debe poder reutilizarse con otro límite:
 
-100 - 10 = 90
-90 + 18.9 = 108.9
-108.9 + 5 = 113.9
+const clasificarConNotable = clasificarNota(7);
+
+console.log(clasificarConNotable(8)); // "Aprobado"
+console.log(clasificarConNotable(6)); // "Suspenso"
 
 Requisitos:
 
 - Cada función debe recibir un único parámetro.
-- Debe poder reutilizarse una configuración parcial.
-- No se permite implementar la función recibiendo los cuatro parámetros a la
-  vez.
+- Debe utilizar currying o acarreo.
+- Debe ser posible guardar y reutilizar una configuración parcial.
+- No se permite implementar la función recibiendo los dos parámetros a la vez.
 
 
-EJERCICIO 5. CALLBACKS: PROCESAMIENTO DE PRODUCTOS (2 PUNTOS)
---------------------------------------------------------------
+EJERCICIO 5. CALLBACKS: ANÁLISIS DE NOTAS (2 PUNTOS)
+-----------------------------------------------------
 
-Implementa una función llamada procesarProductos(productos, callback).
+Implementa una función llamada analizarNotas(notas, callback).
 
-El parámetro productos será un array de objetos con esta estructura:
+El parámetro notas será un array de números, por ejemplo:
 
-const productos = [
-    { nombre: "Teclado", precio: 30 },
-    { nombre: "Ratón", precio: 15 },
-    { nombre: "Monitor", precio: 200 }
-];
+const notas = [4, 7, 5, 9, 3];
 
-La función debe calcular el precio total de todos los productos y pasar el
-resultado al callback.
+La función debe recorrer el array y calcular:
 
-El callback recibirá dos parámetros:
+1. La suma de todas las notas.
+2. La cantidad de notas.
+3. La cantidad de notas aprobadas, considerando aprobado a partir de 5.
 
-1. El precio total.
-2. La cantidad de productos procesados.
+Cuando termine los cálculos, debe llamar al callback y pasarle esos tres
+resultados, en ese orden.
 
 Ejemplo:
 
-procesarProductos(productos, (total, cantidad) => {
-    console.log(`Se han procesado ${cantidad} productos`);
-    console.log(`El precio total es ${total} euros`);
+analizarNotas(notas, (suma, cantidad, aprobados) => {
+    console.log(`La suma es ${suma}`);
+    console.log(`Se han corregido ${cantidad} notas`);
+    console.log(`Han aprobado ${aprobados} alumnos`);
 });
 
 Resultado esperado:
 
-Se han procesado 3 productos
-El precio total es 245 euros
+La suma es 28
+Se han corregido 5 notas
+Han aprobado 3 alumnos
 
-Utiliza también la función con otro callback que calcule y muestre el precio
-medio:
+Utiliza también la función con otro callback que calcule y muestre la nota
+media:
 
-procesarProductos(productos, (total, cantidad) => {
-    console.log(`El precio medio es ${total / cantidad} euros`);
+analizarNotas(notas, (suma, cantidad) => {
+    console.log(`La nota media es ${suma / cantidad}`);
 });
 
 Requisitos:
 
-- procesarProductos debe recibir y utilizar un callback.
-- El callback debe ejecutarse después de calcular los datos.
-- La función debe funcionar con cualquier array de productos.
-- No se debe escribir el mensaje directamente dentro de
-  procesarProductos.
-
-
-function procesarProductos(productos, callback) {
-    const total = productos.reduce((suma, producto) => suma + producto.precio, 0);
-    const cantidad = productos.length;
-    
-    callback(total, cantidad);
-}
-
-// Array de prueba
-const productos = [
-    { nombre: "Teclado", precio: 30 },
-    { nombre: "Ratón", precio: 15 },
-    { nombre: "Monitor", precio: 200 }
-];
-
-// Uso 1: Mostrar cantidad y total
-procesarProductos(productos, (total, cantidad) => {
-    console.log(`Se han procesado ${cantidad} productos`);
-    console.log(`El precio total es ${total} euros`);
-});
-
-// Uso 2: Mostrar el precio medio
-procesarProductos(productos, (total, cantidad) => {
-    console.log(`El precio medio es ${total / cantidad} euros`);
-});
+- analizarNotas debe recibir y utilizar un callback.
+- El callback debe ejecutarse después de recorrer y calcular los datos.
+- La función debe funcionar con cualquier array de notas.
+- No se debe escribir ningún mensaje directamente dentro de analizarNotas.
 
 
 CRITERIOS GENERALES DE CORRECCIÓN
