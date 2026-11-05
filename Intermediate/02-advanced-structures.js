@@ -179,13 +179,14 @@ console.log([...setA])
 
 setA.forEach(element => console.log(element))
 
+
 // Maps avanzados
 
 // - Iteración
 
 let myMap = new Map([
-    ["name", "RomeroDev"],
-    ["age", 37]
+    ["name", "Miguel"],
+    ["age", 30]
 ])
 
 myMap.forEach((value, key) => console.log(`${key}: ${value}`))
