@@ -1,8 +1,3 @@
-/*
-Clases 29 a 37 - Objetos y clases avanzados
-Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=9096
-*/
-
 // Clases avanzadas
 
 class Person {
@@ -24,19 +19,44 @@ person.sayAge = function () {
 }
 person.sayAge()
 
+
+const otraPerson = new Person("María", 33)
+// otraPerson.sayAge() -> Error, no es una función
+
 // - Abstracción
 
+// Una clase abstracta es una plantilla que no se puede instanciar directamente, sino que sirve como base para que otras clases (subclases)
+//  la hereden e implementen su comportamiento.
+
+
+// Dado que JavaScript no incluye una palabra clave nativa como abstract, el código de la clase Animal la emula mediante dos mecanismos:
 class Animal {
     constructor(name) {
+
+  
+        // 1. Bloqueo de instanciación con new.target
+    
         if (new.target === Animal) {
             throw new Error("No se puede instanciar una clase abstracta")
         }
+
+        // new.target detecta qué función constructora fue invocada con el operador new.
+
+        // Si intentas hacer new Animal("Nombre"), new.target será igual a Animal y lanzará el error.
+
+        // Si instancias una subclase (por ejemplo, new Dog("Rufo")), new.target apuntará a Dog, por lo que la validación pasará sin problemas.
+
         this.name = name
     }
 
+
+    // 2. Simulación de método abstracto
     makeSound() {
         throw new Error("Este método tiene que ser implementado por la subclase")
     }
+
+    // Establece un "contrato": define la firma del método en la clase padre, pero fuerza a que cada subclase escriba su propia implementación.
+    // Si una subclase no sobrescribe makeSound(), al llamarlo heredará esta versión base y devolverá el error.
 }
 
 // Error
@@ -44,6 +64,9 @@ class Animal {
 // console.log(animal)
 
 // - Polimorfismo
+
+// El polimorfismo (que literalmente significa "muchas formas") es la habilidad de interactuar con distintos tipos de objetos usando un mismo nombre de método (makeSound()),
+//  dejando que cada objeto responda según su propia naturaleza.
 
 class Cat extends Animal {
 
@@ -67,37 +90,133 @@ const dog = new Dog("RomeroDog")
 console.log(dog)
 dog.makeSound()
 
-// - Mixins
 
+// La verdadera ventaja del polimorfismo
+
+// El beneficio real aparece cuando trabajas con grupos de objetos heterogéneos sin tener que verificar qué tipo específico representa cada uno:
+const misMascotas = [
+    new Cat("RomeroCat"),
+    new Dog("RomeroDog")
+];
+
+// Tratas a todos simplemente como "Animales"
+misMascotas.forEach(animal => animal.makeSound());
+// Imprime:
+// Miau!
+// Guau!
+
+// Sin polimorfismo, tendrías que llenar tu código de comprobaciones tipo if (animal instanceof Cat) o 
+// if (animal instanceof Dog) para saber qué hacer en cada caso.
+// El polimorfismo elimina esa complejidad haciendo que cada objeto sepa cómo comportarse.
+
+
+
+// - Mixins
+// Un mixin es un patrón de diseño que permite añadir comportamientos (métodos) a múltiples clases sin recurrir a la herencia.
+
+// En JavaScript, una clase solo puede heredar de una única clase padre (extends). 
+// Los mixins solucionan esta limitación permitiendo la reutilización horizontal de código entre clases que no comparten necesariamente la misma jerarquía.
+
+//Definición del Mixin (FlyMixin)
+
+// Se crea un objeto literal ordinario llamado FlyMixin. 
+// Contiene el método fly(), que accede a this.name. 
+// No es una clase ni una instancia; es solo un contenedor de comportamientos reutilizables.
 const FlyMixin = {
     fly() {
         console.log(`${this.name} está volando`)
     }
 }
 
+// Declaración de subclases (Bird y Dragon)
+// Se definen dos clases vacías que extienden de Animal.
+// Al no escribir un constructor explícito en Bird o Dragon, JavaScript llama implícitamente al constructor de Animal,
+// heredando la asignación de this.name y las protecciones de la clase abstracta
+
 class Bird extends Animal { }
 
 class Dragon extends Animal { }
 
-Object.assign(Bird.prototype, FlyMixin)
-Object.assign(Dragon.prototype, FlyMixin)
 
-const bird = new Bird("RomeroBird")
+// Inyección del comportamiento en los prototipos
+// Object.assign(destino, origen) copia todas las propiedades del objeto origen en el objeto destino.
+Object.assign(Bird.prototype, FlyMixin)
+// Copia la función fly dentro de Bird.prototype.
+Object.assign(Dragon.prototype, FlyMixin)
+// Copia la función fly dentro de Dragon.prototype.
+
+// A partir de este momento, cualquier instancia de Bird o Dragon tendrá acceso al método fly() a través de la cadena de prototipos.
+
+
+const bird = new Bird("Gorrión")
 
 console.log(bird.name)
 bird.fly()
 
-const dragon = new Dragon("RomeroDragon")
+const dragon = new Dragon("Drako")
 
 console.log(dragon.name)
 dragon.fly()
 
+
+/*
+Ejercicio: Sistema de Habilidades para Personajes
+Objetivo: Combinar una clase abstracta con la inyección de Mixins para componer habilidades de forma flexible.
+
+Requisitos
+Clase Abstracta Character:
+
+Su constructor debe recibir name y hp (puntos de vida).
+
+Debe lanzar un error si se intenta instanciar directamente usando new.target.
+
+Mixins de Habilidades:
+
+AttackMixin: Contiene el método attack(), que imprime en consola:
+
+"${this.name} realiza un ataque."
+
+HealMixin: Contiene el método heal(amount), que suma amount a this.hp e imprime:
+
+"${this.name} se cura ${amount} HP. Vida total: ${this.hp}"
+
+Subclases:
+
+Warrior: Hereda de Character e incorpora únicamente AttackMixin.
+
+Cleric: Hereda de Character e incorpora únicamente HealMixin.
+
+Paladin: Hereda de Character e incorpora ambos mixins (AttackMixin y HealMixin).
+
+Prueba de Funcionamiento:
+
+Intenta instanciar new Character("Nadie", 100) para confirmar que lanza el error.
+
+Crea una instancia de Warrior, Cleric y Paladin.
+
+Invoca sus métodos para verificar que cada tipo de personaje tenga solo las habilidades que le corresponden.
+*/
+
+
+
 // - Patrón Singleton
+// El patrón Singleton es un patrón de diseño creacional que garantiza que una clase tenga una única instancia en toda la aplicación
+// y proporciona un punto de acceso global a ella.
+
+// ¿Cuándo se utiliza el patrón Singleton?
+// Gestión de sesiones: Guardar los datos del usuario logueado en un solo lugar centralizado.
+
+// Conexiones a base de datos: Reutilizar un único canal de conexión en lugar de abrir miles de conexiones simultáneas.
+
+// Configuración global / Estado de la app: Guardar variables del entorno (modo oscuro/claro, idioma seleccionado, tokens).
+
 
 class Session {
 
     constructor(name) {
-        if (Session.instance) {
+        // comprueba si la propiedad instance dentro de la función constructora Session ya contiene algo
+        // si no hay ninguna instancia devuelve undefined (falsy)
+        if (Session.instance) {            
             return Session.instance
         }
         this.name = name
@@ -105,19 +224,76 @@ class Session {
     }
 }
 
+
+
+
 const session1 = new Session("Miguel Romero")
 const session2 = new Session()
-console.log(session1.name)
-console.log(session2.name)
-console.log(session1 === session2)
+console.log(session1.name) // Imprime: Miguel Romer
+console.log(session2.name) // Imprime: Miguel Romero
+console.log(session1 === session2) // true
 
-const session3 = new Session("RomeroDev")
-console.log(session3.name)
-console.log(session2 === session3)
+const session3 = new Session("RomeroDev") 
+console.log(session3.name) // Imprime: Miguel Romer
+console.log(session2 === session3) // true
+
+
+// Enfoque moderno en JavaScript (Campos y métodos estáticos)
+
+class Session {
+    // 1. Variable privada estática para guardar la única instancia
+    static #instance = null;
+
+    constructor(name) {
+        // Si ya existe una instancia guardada, la devuelve inmediatamente
+        if (Session.#instance) {
+            return Session.#instance;
+        }
+        this.name = name;
+        Session.#instance = this;
+    }
+
+    // 2. Método estático de acceso oficial
+    static getInstance(name) {
+        if (!Session.#instance) {
+            console.log(`-> Creando la primera sesión para: "${name}"...`);
+            Session.#instance = new Session(name);
+        } else {
+            console.log(`-> Ya existe una sesión activa. Ignorando el nuevo intento...`);
+        }
+        return Session.#instance;
+    }
+}
+
+// --- PRUEBAS EN TERMINAL ---
+
+console.log("=== LLAMADA 1 ===");
+const s1 = Session.getInstance("Miguel Romero");
+console.log("Nombre en s1:", s1.name);
+
+console.log("\n=== LLAMADA 2 ===");
+const s2 = Session.getInstance("María López");
+console.log("Nombre en s2:", s2.name);
+
+console.log("\n=== LLAMADA 3 (usando new directamente) ===");
+const s3 = new Session("RomeroDev");
+console.log("Nombre en s3:", s3.name);
+
+console.log("\n=== VERIFICACIONES DE IDENTIDAD ===");
+console.log("¿s1 es exactamente igual a s2?:", s1 === s2);
+console.log("¿s2 es exactamente igual a s3?:", s2 === s3);
 
 // - Symbol
+// Un Symbol es un tipo de dato primitivo introducido en ES6 cuyo valor es único e inmutable.
 
+// A diferencia de las clases normales, Symbol no se instancia con new (hacer new Symbol() da error). Se genera invocando la función Symbol().
 const ID = Symbol("id")
+
+// En la Programación Orientada a Objetos en JavaScript,
+// los símbolos se utilizan principalmente para dos propósitos:
+// 1.- crear propiedades privadas/ocultas 
+// 2.- personalizar el comportamiento interno de las clases (Well-Known Symbols).
+
 
 class User {
     constructor(name) {
