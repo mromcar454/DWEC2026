@@ -289,10 +289,12 @@ console.log("¿s2 es exactamente igual a s3?:", s2 === s3);
 // A diferencia de las clases normales, Symbol no se instancia con new (hacer new Symbol() da error). Se genera invocando la función Symbol().
 const ID = Symbol("id")
 
+// Cada vez que ejecutas Symbol(), el motor de JavaScript (como V8 en Chrome/Node.js) crea en memoria una estructura interna con dos elementos: 
+// Un Identificador Único de Memoria: Una dirección o puntero interno único que genera el motor de JS. Es un valor de bajo nivel imposible de replicar o falsificar.
+
 // En la Programación Orientada a Objetos en JavaScript,
-// los símbolos se utilizan principalmente para dos propósitos:
-// 1.- crear propiedades privadas/ocultas 
-// 2.- personalizar el comportamiento interno de las clases (Well-Known Symbols).
+// los símbolos se utilizan principalmente para crear propiedades privadas/ocultas 
+
 
 
 class User {
@@ -306,10 +308,41 @@ class User {
     }
 }
 
+// this[ID] = Math.random(): Al usar corchetes [ID], JavaScript evalúa el contenido de la variable ID.
+// La propiedad queda guardada en el objeto con esa clave Symbol única en lugar de un texto tradicional.
+
+// getId(): Define un método que sí sabe qué variable contiene el Symbol (ID), por lo que puede acceder internamente a this[ID].
+
 const user = new User("Miguel")
 console.log(user.name)
-console.log(user.ID)
-console.log(user.getId())
+console.log(user.ID) // Imprime: undefined
+console.log(user.getId()) // Imprime el random
+
+
+// Alternativa moderna
+
+
+class User {
+    // 1. Es obligatorio declarar la propiedad privada arriba, en el cuerpo de la clase
+    #id;
+
+    constructor(name) {
+        this.name = name;
+        this.#id = Math.random(); // Se le asigna el valor usando #
+    }
+
+    getId() {
+        return this.#id; // Acceso interno permitido dentro de la clase
+    }
+}
+
+const user = new User("Miguel");
+
+console.log(user.name);    // Imprime: "Miguel"
+console.log(user.getId()); // Imprime: 0.7483... (el número aleatorio)
+
+// Intentar acceder directamente a la propiedad privada desde fuera:
+console.log(user.#id);     // Error de sintaxis (SyntaxError: Private field '#id' must be declared...)
 
 // - instanceof
 
@@ -354,3 +387,80 @@ console.log(account.balance)
 
 // Error
 // account.balance = -10
+
+
+Este código aborda tres conceptos fundamentales de JavaScript: la verificación de tipos con `instanceof`, la creación directa de objetos vinculados por prototipos con `Object.create`, y la interceptación de comportamientos mediante `Proxy`.
+
+---
+
+### 1. El operador `instanceof`
+
+```javascript
+class Car { }
+const car = new Car()
+console.log(car instanceof Car) // true
+
+```
+
+El operador `instanceof` verifica si la propiedad `.prototype` de una clase/función constructora existe en la cadena de prototipos del objeto evaluado.
+
+* Al usar `new Car()`, JavaScript crea un objeto cuya cadena de prototipos incluye a `Car.prototype`.
+* Por lo tanto, `car instanceof Car` devuelve `true`.
+
+---
+
+### 2. Creación con `Object.create()`
+
+```javascript
+const anotherCar = Object.create(Car.prototype)
+console.log(anotherCar instanceof Car) // true
+
+```
+
+`Object.create(prototipo)` crea un objeto totalmente nuevo cuyo prototipo queda vinculado directamente al objeto que le pases como parámetro.
+
+* **Diferencia clave con `new`:** `Object.create(Car.prototype)` **no ejecuta el constructor** de `Car`. Solo hereda la estructura de su prototipo.
+* Dado que el prototipo de `anotherCar` apunta explícitamente a `Car.prototype`, `anotherCar instanceof Car` también evalúa como `true`.
+
+---
+
+### 3. El patrón `Proxy` (Validación e Interceptación)
+
+Un **Proxy** envuelve a un objeto (el `target`) para interceptar y modificar el comportamiento por defecto de operaciones clave como leer (`get`) o escribir (`set`) sus propiedades.
+
+```javascript
+const proxy = {
+    get(target, property) {
+        console.log(`Se accede a la propiedad ${property}`)
+        return target[property]
+    },
+    set(target, property, value) {
+        if (property === "balance" && value < 0) {
+            throw new Error("El saldo no puede ser negativo")
+        }
+        target[property] = value
+    }
+}
+
+```
+
+#### Funcionamiento paso a paso:
+
+1. **`const account = new Proxy(new BankAccount(100), proxy)`**
+Crea la instancia de `BankAccount` con `balance = 100` y la envuelve dentro del objeto `Proxy`.
+2. **Lectura (`console.log(account.balance)`)**
+* Se activa la trampa **`get`**.
+* Imprime en consola: `"Se accede a la propiedad balance"`.
+* Retorna y muestra el valor original (`100`).
+
+
+3. **Modificación válida (`account.balance = 50`)**
+* Se activa la trampa **`set`**.
+* Evalúa si `property === "balance"` y `value < 0` (`50 < 0` es `false`).
+* Pasa la validación y actualiza `target.balance = 50`.
+
+
+4. **Modificación inválida (`account.balance = -10`)**
+* Se activa la trampa **`set`**.
+* Evalúa la condición: `-10 < 0` resulta `true`.
+* Lanza un `Uncaught Error: El saldo no puede ser negativo` deteniendo la ejecución y protegiendo la integridad del objeto original.
