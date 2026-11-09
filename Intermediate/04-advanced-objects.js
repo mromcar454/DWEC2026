@@ -1,8 +1,3 @@
-/*
-Clases 24 a 28 - Objetos y clases avanzados
-Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=7639
-*/
-
 // Objetos avanzados
 
 // - Prototipos y Herencia
@@ -10,8 +5,10 @@ Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=7639
 // Prototipos
 
 // En JavaScript, un prototipo es un objeto base del cual otros objetos heredan propiedades 
-// y métodos a través de un enlace interno. Prácticamente todo en JavaScript es un objeto o se comporta como uno, y el mecanismo de prototipos es la forma en que JavaScript implementa la herencia.
-
+// y métodos a través de un enlace interno. 
+// Prácticamente todo en JavaScript es un objeto o se comporta como uno, y el mecanismo de prototipos es la forma en que JavaScript 
+// implementa la herencia.
+/*
 let person = {
     name: "Miguel",
     age: 37,
@@ -163,43 +160,113 @@ class Programmer extends Person {
     }
 }
 
-const programmer = new Programmer("RomeroDev", 37, "JavaScript");
+const programmer = new Programmer("Miguel", 30, "JavaScript");
 
-programmer.greet();  // "Hola, soy RomeroDev"
-programmer.sayAge(); // "Tengo 37 años"
-
-
-/*
+programmer.greet();  // "Hola, soy Miguel"
+programmer.sayAge(); // "Tengo 30 años"
 
 
 // - Métodos estáticos y de instancia
+
+
+
 
 function Person(name, age) {
     this.name = name
     this.age = age
 }
 
+// Método de Instancia (vía prototipo)
 Person.prototype.greet = function () {
-    console.log(`Hola, soy ${this.name}`)
+    console.log(`Hola, soy ${this.name}`) // 'this' accede al objeto específico
 }
 
+// Método ESTÁTICO (se asigna directamente a Person)
+Person.isAdult = function (age) {
+    return age >= 18
+}
+
+
+console.log(Person.isAdult(37)) // true
+console.log(Person.isAdult(15)) // false
+
 let newPerson = new Person("Miguel", 37)
-newPerson.greet()
+newPerson.greet() // (Se llama DESDE el objeto)
+
+// ❌ ESTO DARÍA ERROR:
+// newPerson.isAdult(37)  -> TypeError: newPerson.isAdult is not a function
+
+
+// En sintaxis moderna
+class Person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+
+    // Método de Instancia
+    greet() {
+        console.log(`Hola, soy ${this.name}`)
+    }
+
+    // Método ESTÁTICO
+    static isAdult(age) {
+        return age >= 18
+    }
+}
+
+// Se ejecuta directamente sobre la clase
+console.log(Person.isAdult(37)) // true
+
 
 // - Métodos avanzados
 
 // assign
 
+// Object.assign(destino, ...fuentes)
+// Este método copia todas las propiedades de uno o más objetos origen (fuentes)
+//  hacia un objeto destino y lo devuelve.
+
 let personCore = { name: "Miguel" }
-let personDetails = { age: 37, alias: "RomeroDev" }
+let personDetails = { age: 30, job: "Programmer" }
 
 let fullPerson = Object.assign(personCore, personDetails)
 console.log(fullPerson)
+// Resultado: { name: "Miguel", age: 30, job: "Programmer" }
+
+// Detalle muy importante (Mutación):
+// Object.assign modifica el objeto de destino original (personCore).
+//  No solo crea fullPerson, sino que personCore ahora también tiene las nuevas propiedades.
+
+
+// Alternativa moderna
+let fullPerson2 = { ...personCore, ...personDetails };
 
 // keys, values, entries
 
 console.log(Object.keys(fullPerson))
+// Devuelve un array únicamente con los nombres de las propiedades (las claves)
+// Imprime: ["name", "age", "job"]
 console.log(Object.values(fullPerson))
+// Devuelve un array únicamente con los valores almacenados dentro del objeto:
+// Imprime: ["Miguel", 37, "Programmer"]
 console.log(Object.entries(fullPerson))
+// Devuelve un array de arrays, donde cada elemento interno es un par de 2 elementos
+// [clave, valor]
+// Imprime:
+// [
+//   ["name", "Miguel"],
+//   ["age", 30],
+//   ["job", "Programmer"]
+// ]
 
-*/
+// ¿Para qué se usan en el día a día?
+// Object.entries() es especialmente útil cuando quieres iterar sobre un objeto con un bucle for...of usando desestructuración:
+
+for (const [clave, valor] of Object.entries(fullPerson)) {
+    console.log(`${clave}: ${valor}`)
+}
+// Imprime:
+// name: Miguel
+// age: 30
+// alias: Programmer

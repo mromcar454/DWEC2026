@@ -32,6 +32,7 @@ console.log(impares)
 let numbers2 = [5,5,5]
 
 console.log(numbers2.reduce((acumulador, elementoActual) => acumulador * elementoActual,1))
+
                                                                                         // 1 es el acumulador cuando empiezas a iterar
 
 
@@ -80,19 +81,24 @@ const usuarios = [
 // Extraemos y aplanamos todos los hobbies en un solo array
 const todosLosHobbies = usuarios.flatMap(usuario => usuario.hobbies)
 
+
+
 console.log(todosLosHobbies)
 // Resultado: ["leer", "correr", "cocinar", "leer", "videojuegos"]
 
-// Convertir un Array en Set 
+// Convertir un Array en Set
 const todosLosHobbiesSet = new Set(todosLosHobbies)
-// usando el operador Spread
-const todosLosHobbiesSet2 = [...new Set(todosLosHobbies)]
+
+// usando el operador Spread 
+// Lo convierte a Set y lo expande conviertiéndolo en Array
+const todosLosHobbiesA = [...new Set(todosLosHobbies)]
+
 // Usando Array.from
 const todosLosHobbiesSet3 = Array.from(new Set(todosLosHobbies))
 
 
 console.log(todosLosHobbiesSet)
-console.log(todosLosHobbiesSet2)
+console.log(todosLosHobbiesA)
 console.log(todosLosHobbiesSet3)
 
 
@@ -126,6 +132,7 @@ console.log(numbersSort)
 
 
 // Ordenación de números
+
 let numbers4 = [1,8,10,2,4] 
 let numbersSort2 = numbers4.sort((a,b) => a - b)
 console.log(numbers4)
@@ -133,7 +140,13 @@ console.log(numbers4)
 // Evalúa matemáticamente los pares de números del array mediante la resta:
 // Si a - b < 0: coloca a antes que b.
 // Si a - b > 0: coloca b antes que a.
-//Si a - b === 0: mantiene el orden original entre ambos.
+// Si a - b === 0: mantiene el orden original entre ambos.
+
+
+// Ordenación de mayor a menor
+let numbersSortMayorAMeno = numbers4.sort((a,b) => b - a)
+console.log(numbersSortMayorAMeno)
+
 
 
 // Ordenación entre Strings sin distinguir Mayúsculas y minúsculas
@@ -220,4 +233,44 @@ console.log(union)
 // Intersección
 
 const interseccion =  new Set([...setA].filter(element => setB.has(element)))
+const interseccion2 =  setA.intersection(setB)
+
 console.log(interseccion)
+
+// Diferencia
+
+const diferencia =  new Set([...setA].filter(element => !setB.has(element)))
+const diferencia2 =  setA.difference(setB)
+
+console.log(diferencia)
+
+
+// - Conversión de Set a Array
+
+console.log([...setA])
+
+
+// forEach
+
+setA.forEach(element => console.log(element))
+
+
+// Maps avanzados
+
+let myMap = new Map ([
+  ["name", "Miguel"],
+  ["age", 30]
+])
+
+// - Iteración
+myMap.forEach((value, key) => console.log(`La clave es ${key} y el valor es ${value}`))
+
+for (let entry of myMap) {
+  console.log(`La clave es ${entry[0]} y el valor es ${entry[1]}`)
+}
+
+for (let [clave,valor] of myMap) {
+  console.log(`La clave es ${clave} y el valor es ${valor}`)
+}
+
+

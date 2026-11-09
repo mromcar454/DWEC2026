@@ -67,7 +67,7 @@ for (let amount of recipeMap.values()) {
 
 // iterando sobre las entradas [clave, valor]
 for (let entry of recipeMap) { 
-  console.log(entry); // pepino,500 (etc)
+  console.log(entry[1]); // pepino,500 (etc)
 }
 
 for (let entry of recipeMap.entries()) {
