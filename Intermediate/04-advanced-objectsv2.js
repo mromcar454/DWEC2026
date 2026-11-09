@@ -8,7 +8,8 @@
 
 // En JavaScript, un prototipo es un objeto base del cual otros objetos heredan propiedades 
 // y métodos a través de un enlace interno. 
-// Prácticamente todo en JavaScript es un objeto o se comporta como uno, y el mecanismo de prototipos es la forma en que JavaScript implementa la herencia.
+// Prácticamente todo en JavaScript es un objeto o se comporta como uno,
+//  y el mecanismo de prototipos es la forma en que JavaScript implementa la herencia.
 
 let person = {
     name: "Miguel",
@@ -54,7 +55,6 @@ console.log(person)
 person.sayAge()
 
 
-
 // Para asignarlo directamente a su prototipo actual (Object.getPrototypeOf) 
 // Puedes acceder al prototipo del objeto y añadir el método ahí.
 
@@ -93,8 +93,10 @@ Fin de la cadena: Si no estuviera ahí, buscaría en el prototipo del prototipo 
 
 
 El verdadero poder del prototipo: Reutilizar memoria
-Si creas 100 personas directamente como objetos literales con métodos internos, cada persona creará una copia nueva de las funciones en memoria. 
-Usando prototipos (a través de funciones constructoras o clases), compartes una sola función entre todas las instancias:
+Si creas 100 personas directamente como objetos literales con métodos internos,
+cada persona creará una copia nueva de las funciones en memoria. 
+Usando prototipos (a través de funciones constructoras o clases), 
+compartes una sola función entre todas las instancias:
 
 */
 

@@ -8,7 +8,7 @@
 // y métodos a través de un enlace interno. 
 // Prácticamente todo en JavaScript es un objeto o se comporta como uno, y el mecanismo de prototipos es la forma en que JavaScript 
 // implementa la herencia.
-/*
+
 let person = {
     name: "Miguel",
     age: 37,
@@ -45,7 +45,8 @@ person.sayAge = function () {
     console.log(`Tengo ${this.age} años`)
 }
 
-// Aquí no estamos modificando el prototipo; estamos añadiendo una propiedad propia (own property) directamente al objeto person. 
+// Aquí no estamos modificando el prototipo; estamos añadiendo una propiedad propia (own property) 
+// directamente al objeto person. 
 // Si crearas otro objeto diferente, ese nuevo objeto no tendría el método sayAge.
 
 
@@ -123,7 +124,8 @@ console.log(person.language)
 console.log(programmer.name)
 console.log(programmer.age)
 console.log(programmer.language)
-// El padre (person) no tiene acceso a las propiedades creadas en sus "hijos" (programmer.language resulta en undefined).
+// El padre (person) no tiene acceso a las propiedades creadas en sus "hijos" 
+// (programmer.language resulta en undefined).
 programmer.greet()
 programmer.sayAge()
 
@@ -131,7 +133,8 @@ programmer.sayAge()
 // apuntando al objeto a la izquierda del punto (programmer).Al ejecutar programmer.greet()
 // 1- JS busca el método greet en programmer -> No está.
 // Sube a person -> Lo encuentra y lo ejecuta.Dentro del método greet, evalúa this.name. 
-// Como llamaste a la función desde programmer, this es programmer. Por lo tanto, imprime "RomeroDev" (su propiedad propia) y no "Miguel".Al ejecutar programmer.sayAge():Encuentra el método sayAge en person.Dentro del método, evalúa this.age.Busca age en programmer -> No está.
+// Como llamaste a la función desde programmer, this es programmer. 
+// Por lo tanto, imprime "RomeroDev" (su propiedad propia) y no "Miguel".Al ejecutar programmer.sayAge():Encuentra el método sayAge en person.Dentro del método, evalúa this.age.Busca age en programmer -> No está.
 // Sube a person -> Encuentra 37. Imprime "Tengo 37 años".
 
 // Equivalente moderno usando Clases (class / extends)

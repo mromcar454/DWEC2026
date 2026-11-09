@@ -94,7 +94,7 @@ for (const val of interseccion) {
 console.log("--- Iteración de Diferencia ---") 
 diferencia.forEach(val => console.log(`Elemento diferencia: ${val}`)) 
 
-// 7. Crea un mapa que almacene información se usuarios (nombre, edad y email) e itera los datos
+// 7. Crea un mapa que almacene información de usuarios (nombre, edad y email) e itera los datos
 
 const usuariosMap = new Map([
   [1, { nombre: "Ana", edad: 28, email: "ana@email.com" }],

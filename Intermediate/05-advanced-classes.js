@@ -100,7 +100,7 @@ const misMascotas = [
 ];
 
 // Tratas a todos simplemente como "Animales"
-misMascotas.forEach(animal => animal.makeSound());
+misMascotas.forEach(animal => animal.makeSound())
 // Imprime:
 // Miau!
 // Guau!
@@ -111,7 +111,7 @@ misMascotas.forEach(animal => animal.makeSound());
 
 
 
-// - Mixins
+// Mixins
 // Un mixin es un patrón de diseño que permite añadir comportamientos (métodos) a múltiples clases sin recurrir a la herencia.
 
 // En JavaScript, una clase solo puede heredar de una única clase padre (extends). 
