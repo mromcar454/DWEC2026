@@ -147,7 +147,6 @@ Object.assign(Dragon.prototype, FlyMixin)
 
 // A partir de este momento, cualquier instancia de Bird o Dragon tendrá acceso al método fly() a través de la cadena de prototipos.
 
-
 const bird = new Bird("Gorrión")
 
 console.log(bird.name)
@@ -197,17 +196,13 @@ Crea una instancia de Warrior, Cleric y Paladin.
 Invoca sus métodos para verificar que cada tipo de personaje tenga solo las habilidades que le corresponden.
 */
 
-
-
 // - Patrón Singleton
 // El patrón Singleton es un patrón de diseño creacional que garantiza que una clase tenga una única instancia en toda la aplicación
 // y proporciona un punto de acceso global a ella.
 
 // ¿Cuándo se utiliza el patrón Singleton?
 // Gestión de sesiones: Guardar los datos del usuario logueado en un solo lugar centralizado.
-
 // Conexiones a base de datos: Reutilizar un único canal de conexión en lugar de abrir miles de conexiones simultáneas.
-
 // Configuración global / Estado de la app: Guardar variables del entorno (modo oscuro/claro, idioma seleccionado, tokens).
 
 
@@ -215,8 +210,8 @@ class Session {
 
     constructor(name) {
         // comprueba si la propiedad instance dentro de la función constructora Session ya contiene algo
-        // si no hay ninguna instancia devuelve undefined (falsy)
-        if (Session.instance) {            
+        // si no hay ninguna instancia devuelve undefined (falsy) y crea una instancia
+        if (Session.instance) {             
             return Session.instance
         }
         this.name = name
@@ -226,10 +221,9 @@ class Session {
 
 
 
-
 const session1 = new Session("Miguel Romero")
 const session2 = new Session()
-console.log(session1.name) // Imprime: Miguel Romer
+console.log(session1.name) // Imprime: Miguel Romero
 console.log(session2.name) // Imprime: Miguel Romero
 console.log(session1 === session2) // true
 
@@ -239,7 +233,6 @@ console.log(session2 === session3) // true
 
 
 // Enfoque moderno en JavaScript (Campos y métodos estáticos)
-
 class Session {
     // 1. Variable privada estática para guardar la única instancia
     static #instance = null;
@@ -283,10 +276,13 @@ console.log("\n=== VERIFICACIONES DE IDENTIDAD ===");
 console.log("¿s1 es exactamente igual a s2?:", s1 === s2);
 console.log("¿s2 es exactamente igual a s3?:", s2 === s3);
 
+
+
 // - Symbol
 // Un Symbol es un tipo de dato primitivo introducido en ES6 cuyo valor es único e inmutable.
 
-// A diferencia de las clases normales, Symbol no se instancia con new (hacer new Symbol() da error). Se genera invocando la función Symbol().
+// A diferencia de las clases normales, Symbol no se instancia con new (hacer new Symbol() da error). 
+// Se genera invocando la función Symbol().
 const ID = Symbol("id")
 
 // Cada vez que ejecutas Symbol(), el motor de JavaScript (como V8 en Chrome/Node.js) crea en memoria una estructura interna con dos elementos: 
